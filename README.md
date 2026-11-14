@@ -4,29 +4,48 @@ Read a research PDF beside a generated map of its questions, claims, and evidenc
 
 ## Run locally
 
-Use Node.js 24, pnpm 11, and Git.
+Requirements: Node.js 24, pnpm 11, and Git. The browser checks and screenshot script also need Chrome or Chromium.
 
 ```sh
 pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open [localhost:5178](http://localhost:5178/) and choose an example from the Library. The examples work without an API key. To import a new arXiv paper, supply `OPENROUTER_API_KEY` in the server environment before starting the app, then use **Add paper**. Generation sends the paper’s Markdown to OpenRouter and may incur charges.
+Open [localhost:5178](http://localhost:5178/) and choose an example from the Library. The examples work without an API key.
 
-Imported PDFs open directly from arXiv. The server keeps the text in a private cache for retries.
+To import a new arXiv paper, set `OPENROUTER_API_KEY` in the server environment before starting the app, then use **Add paper**. Generation sends the paper’s Markdown to OpenRouter and may incur charges. Keep the key out of Git, command arguments, and logs. Imported PDFs open directly from arXiv. The server keeps the text in a private cache for retries. Papers and maps you add are stored under `data/papers`, which Git ignores.
 
-Run this prototype on your own computer or a trusted private network. The server starts locally by default and has no accounts.
+Run this prototype on your own computer or a trusted private network. The development server listens on localhost, and the API has no accounts. An optional invite gate for shared deployments is described in the [development guide](docs/development.md#optional-invite-gate).
+
+## Check your changes
+
+```sh
+pnpm typecheck
+pnpm test
+pnpm build
+```
+
+`pnpm dev:mock` runs a separate reader with bundled PDFs and fixed mock AI results, and needs no credentials. `pnpm verify:mock` checks it in headless Chrome. Set `CHROME` to the browser executable if it is not at the macOS default. See [local mock development](docs/mock-development.md). The [development guide](docs/development.md) lists every script and environment variable.
+
+## Where things are
+
+- `src/`: the browser reader (React, pdf.js, React Flow).
+- `server/`: the paper API and optional invite gate, mounted into Vite’s dev and preview servers. There is no separate backend process.
+- `samples/`: example papers and maps that seed an empty library.
+- `public/help.html`, `public/help/img/`: the full user help and its images.
+- `scripts/`: verification, screenshot, and maintenance scripts.
+- `test/`: vitest tests.
+- `data/` and `output/`: local working folders. Git ignores them, and nothing in the project depends on their contents.
+
+This repository holds the whole project. It has no private deployment settings, credentials, or hosts. Do not add any. Keep hostnames, invite files, signing keys, and API keys outside the repository.
 
 - [User help](public/help.html), also available under **Help** in the app
-- [Development guide](docs/development.md)
+- [Development guide](docs/development.md): API, storage, configuration, and reader internals
+- [Agent guide](AGENTS.md): conventions, and the rule to update the help with every visible change
 - [Sample credits](samples/README.md)
 - [Ideas](docs/ideas.md)
 
-## Local mock providers
-
-Use `pnpm dev:mock` for bundled PDFs and deterministic mock AI results without provider credentials. See [local mock development](docs/mock-development.md) for setup and validation.
-
-Set `PDF_MIRA_CONTACT_EMAIL` in the server environment to enable **Feedback** and, on deployments with private access, **Request access**.
+Set `PDF_MIRA_CONTACT_EMAIL` in the server environment to enable **Feedback** and, on deployments with the invite gate, **Request access**.
 
 ## License
 

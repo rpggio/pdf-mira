@@ -9,9 +9,20 @@ Follow the [local setup](../README.md). Vite’s development and preview servers
 | `pnpm typecheck` | Check TypeScript |
 | `pnpm test` | Run reader, extraction, storage, and API tests with controlled upstream responses |
 | `pnpm build` | Build the browser client |
-| `pnpm verify:ingestion` | Exercise the sample library and reader, then check polling, retries, and offline recovery with browser API fixtures |
-| `pnpm help:shots` | Recapture the screenshots in the full and quick help |
+| `pnpm verify:ingestion` | With `pnpm dev` running, exercise the sample library and reader, then check polling, retries, and offline recovery with browser API fixtures |
+| `pnpm help:shots` | Recapture the screenshots in the full and quick help (needs `pnpm dev` running and Chrome) |
+| `pnpm dev:mock` | Run the isolated mock reader on `http://127.0.0.1:5188/` (see [mock development](mock-development.md)) |
+| `pnpm verify:mock` | Check the mock reader and every sample in headless Chrome |
 | `pnpm verify:live -- <arxiv-id>` | Verify real acquisition, extraction, publication, and cache reuse using the server credential |
+
+Other scripts, run with `node`:
+
+| Script | Purpose |
+| --- | --- |
+| `scripts/audit-map.mjs <map-file>...` | Audit saved maps for topology problems |
+| `scripts/regenerate-papers.mjs [id...]` | Regenerate maps for ready papers in `PAPERS_DIR`; calls the model |
+| `scripts/pdf-text.mjs <pdf>` | Print a PDF’s text per page, for writing and checking fixtures |
+| `scripts/make-sample-pdf.mjs <text> <pdf>` | Typeset a text file as a two-column PDF with headless Chrome (how the Rain Gardens sample was made from `scripts/rain-gardens.source.txt`) |
 
 For browser verification and screenshots, start the dev server with a fresh library. Set `PAPERS_DIR` to a new directory before starting it to seed a separate library. Set `HELP_BASE` to the server URL if it differs from `http://localhost:5178/`, and set `CHROME` to the Chrome executable if it differs from the script’s macOS default. See [the project guide](../AGENTS.md) for help updates.
 
@@ -25,6 +36,13 @@ Live verification writes to `PAPERS_DIR`. Use a fresh library to exercise conver
 | `SAMPLES_DIR` | Seed library copied into an empty library, default `samples/papers` |
 | `OPENROUTER_API_KEY` | Server-only credential for generating maps |
 | `MIRA_MODEL` | Optional OpenRouter model override, default `openai/gpt-6.1-sol` |
+| `PDF_MIRA_CONTACT_EMAIL` | Optional address behind **Feedback** and **Request access**; public through `/api/access` |
+| `PDF_MIRA_ORIGIN` | Turns on the invite gate in `pnpm preview`; the exact HTTPS origin |
+| `PDF_MIRA_INVITES_FILE`, `PDF_MIRA_SIGNING_KEY_FILE` | Invite gate files; see below |
+| `CREDENTIALS_DIRECTORY` | Fallback folder for `invites.json` and `session-key` (set by systemd `LoadCredential`) |
+| `CHROME`, `HELP_BASE` | Browser scripts: Chrome executable (default is the macOS path) and server URL (default `http://localhost:5178/`) |
+| `MOCK_PORT` | Port for `pnpm verify:mock`, default 5189 |
+| `VERIFY_LIVE_PAPER_ID` | Paper ID for the live check in `verify:ingestion` |
 
 Pass the key through the process environment using your secret manager. Keep it out of Git, shell arguments, logs, and any `VITE_` variable, which can be exposed to browser code.
 
@@ -85,7 +103,7 @@ Pass one or more versioned IDs to select papers. Omitting IDs regenerates all el
 
 ## Optional invite gate
 
-A deployment on a shared network can require an invite. Local development runs without it. Set `PDF_MIRA_ORIGIN` to the exact public HTTPS origin and run the built reader with `pnpm preview`. The gate reads two files, whose paths come from `PDF_MIRA_INVITES_FILE` and `PDF_MIRA_SIGNING_KEY_FILE`. Keep both outside Git and readable only by the service account. A missing or invalid file prevents startup.
+A deployment on a shared network can require an invite. The gate exists only in the preview server: `pnpm dev` never uses it. Build, then run `pnpm preview` with `PDF_MIRA_ORIGIN` set to the exact public HTTPS origin, and put a TLS-terminating proxy in front. Preview binds to localhost unless you pass `--host`. The gate reads two files, whose paths come from `PDF_MIRA_INVITES_FILE` and `PDF_MIRA_SIGNING_KEY_FILE`, or from `invites.json` and `session-key` in `CREDENTIALS_DIRECTORY`. Keep the paper API behind the gate: it has no accounts or quotas of its own. Keep both outside Git and readable only by the service account. A missing or invalid file prevents startup.
 
 The invite file is a JSON array with exactly one access key. The entry has a `name` and a `sha256` field containing the hex SHA-256 digest of the key string. Optional `expiresAt` is an ISO 8601 timestamp. The key grants full app access, including adding papers and retrying generation. Generate it with 32 random bytes encoded as 64 lowercase hex characters. Share only the full `<origin>/invite#access=<key>` URL with the intended audience. The signing key is a persistent 32-byte hex value; keep it stable across deployments.
 

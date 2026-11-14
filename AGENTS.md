@@ -10,6 +10,18 @@
   `pnpm`. Checks: `pnpm typecheck`, `pnpm test`, `pnpm build`. Dev server:
   `pnpm dev` (port 5178).
 
+- Layout: `src/` reader, `server/` paper API and invite gate (Vite plugin, no
+  separate backend), `samples/` seed library, `scripts/` verification and
+  maintenance, `test/` vitest. `README.md` has the map and every env var is in
+  `docs/development.md`.
+- This repository is the whole project and is public. Never commit credentials,
+  invite files, signing keys, hostnames, personal contact details, or deployment
+  settings. `data/` and `output/` are git-ignored scratch space. Deployment, if
+  any, is the operator's concern and lives outside this repo.
+- Browser scripts need Chrome (`CHROME` env var) and, for `help:shots` and
+  `verify:ingestion`, a running `pnpm dev`. `pnpm verify:mock` starts its own
+  server. Run `pnpm typecheck`, `pnpm test` and `pnpm build` before finishing.
+
 ## Keep the help current (required)
 
 Every change a user can see or rely on updates the help in the same change:
