@@ -1,0 +1,43 @@
+{
+  "@graph": [
+    {
+      "@id": "question",
+      "@type": "Question",
+      "content": "How does planting affect runoff in a simulated storm?",
+      "description": ["question-passage"]
+    },
+    {
+      "@id": "claim",
+      "@type": "Claim",
+      "content": "Planting reduced runoff in the test plots."
+    },
+    {
+      "@id": "evidence",
+      "@type": "Evidence",
+      "content": "The planted plots produced 18 liters less runoff per hour.",
+      "description": ["evidence-passage"]
+    },
+    {
+      "@id": "claim-answers-question",
+      "@type": ["RelationInstance", "addresses"],
+      "source": "claim",
+      "destination": "question"
+    },
+    {
+      "@id": "evidence-supports-claim",
+      "@type": ["RelationInstance", "supports"],
+      "source": "evidence",
+      "destination": "claim"
+    },
+    {
+      "@id": "question-passage",
+      "@type": "Item",
+      "content": "What happens to neighborhood-scale flooding after several years of planting?"
+    },
+    {
+      "@id": "evidence-passage",
+      "@type": "Item",
+      "content": "Planted plots released 18 liters less runoff per hour than bare plots."
+    }
+  ]
+}

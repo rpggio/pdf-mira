@@ -1,0 +1,168 @@
+{
+  "@graph": [
+    {
+      "@id": "x:n0",
+      "@type": "Question",
+      "content": "Can the prevalence of problematic trial data be estimated from ClinicalTrials.gov summary results?",
+      "description": [
+        "x:n0-quote-0"
+      ]
+    },
+    {
+      "@id": "x:n1",
+      "@type": "Claim",
+      "content": "Problematic data in clinical trials harm patients and decisions.",
+      "description": [
+        "x:n1-quote-0"
+      ]
+    },
+    {
+      "@id": "x:n2",
+      "@type": "Claim",
+      "content": "Fabricated data tend to lack genuine stochasticity, making them statistically detectable.",
+      "description": [
+        "x:n2-quote-0"
+      ]
+    },
+    {
+      "@id": "x:n3",
+      "@type": "Claim",
+      "content": "Whether problematic data are detected depends on how the data are problematic.",
+      "description": [
+        "x:n3-quote-0"
+      ]
+    },
+    {
+      "@id": "x:n4",
+      "@type": "Evidence",
+      "content": "Severe baseline differences between randomized groups can signal fabrication or procedural error.",
+      "description": [
+        "x:n4-quote-0"
+      ]
+    },
+    {
+      "@id": "x:n5",
+      "@type": "Evidence",
+      "content": "Few researchers combine expertise in these methods with medical science.",
+      "description": []
+    },
+    {
+      "@id": "x:n6",
+      "@type": "Study",
+      "content": "Six-month visit developing and applying detection methods with an onsite supervisor.",
+      "description": [
+        "x:n6-quote-0"
+      ]
+    },
+    {
+      "@id": "x:n7",
+      "@type": "Protocol",
+      "content": "Postpone applying new methods until their statistical properties are investigated.",
+      "description": [
+        "x:n7-quote-0"
+      ]
+    },
+    {
+      "@id": "x:r0",
+      "@type": [
+        "RelationInstance",
+        "addresses"
+      ],
+      "source": "x:n2",
+      "destination": "x:n0",
+      "description": []
+    },
+    {
+      "@id": "x:r1",
+      "@type": [
+        "RelationInstance",
+        "addresses"
+      ],
+      "source": "x:n3",
+      "destination": "x:n0",
+      "description": []
+    },
+    {
+      "@id": "x:r2",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "x:n4",
+      "destination": "x:n2",
+      "description": [
+        "x:r2-quote-0"
+      ]
+    },
+    {
+      "@id": "x:r3",
+      "@type": [
+        "RelationInstance",
+        "opposes"
+      ],
+      "source": "x:n3",
+      "destination": "x:n2",
+      "description": []
+    },
+    {
+      "@id": "x:r4",
+      "@type": [
+        "RelationInstance",
+        "follows"
+      ],
+      "source": "x:n6",
+      "destination": "x:n7",
+      "description": []
+    },
+    {
+      "@id": "x:r5",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "x:n1",
+      "destination": "x:n2",
+      "description": []
+    },
+    {
+      "@id": "x:n0-quote-0",
+      "@type": "Item",
+      "content": "Systematic application of statistical methods to detect problematic data and testing hypotheses of its prevalence could be done within the ClinicalTrials.gov (CT) database"
+    },
+    {
+      "@id": "x:n1-quote-0",
+      "@type": "Item",
+      "content": "As a result, patients were exposed to increased risk instead of decreased risk"
+    },
+    {
+      "@id": "x:n2-quote-0",
+      "@type": "Item",
+      "content": "researchers are often quite bad in fabricating data that look genuinely stochastic"
+    },
+    {
+      "@id": "x:n3-quote-0",
+      "@type": "Item",
+      "content": "Whether problematic data is detected is therefore highly dependent on how the data is problematic"
+    },
+    {
+      "@id": "x:n4-quote-0",
+      "@type": "Item",
+      "content": "severely different baseline measures for two randomized groups"
+    },
+    {
+      "@id": "x:n6-quote-0",
+      "@type": "Item",
+      "content": "The proposed project lasts six months"
+    },
+    {
+      "@id": "x:n7-quote-0",
+      "@type": "Item",
+      "content": "The application of these methods to the ClinicalTrials.gov data is postponed until the statistical properties of these methods are further investigated"
+    },
+    {
+      "@id": "x:r2-quote-0",
+      "@type": "Item",
+      "content": "Since these groups are expected to be statistically similar, if severe differences do occur"
+    }
+  ]
+}

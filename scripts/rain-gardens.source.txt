@@ -1,0 +1,9 @@
+Measuring Runoff from Rain Gardens
+
+Abstract. We compared how much water left planted and bare soil plots during a simulated storm. Planted plots released less water, with the largest differences in plots whose soil was dry before the test.
+
+1. Methods. We measured stormwater leaving twelve plots after a controlled downpour. Six plots contained grasses and deep-rooted flowers. The other six contained bare soil from the same field. We collected the runoff in buckets for one hour.
+
+2. Results. Planted plots released 18 liters less runoff per hour than bare plots. The difference was smallest when both kinds of plot had been watered the previous evening.
+
+3. Interpretation. Deep roots and dry soil can help a plot absorb rainfall. The test used small plots under controlled conditions. Larger field trials would be needed to estimate the effect on a neighborhood drainage system.

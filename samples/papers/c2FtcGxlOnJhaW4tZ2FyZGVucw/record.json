@@ -1,0 +1,25 @@
+{
+  "id": "sample:rain-gardens",
+  "descriptor": {
+    "title": "Measuring Runoff from Rain Gardens",
+    "author": "Fictional study"
+  },
+  "title": "Measuring Runoff from Rain Gardens",
+  "authors": "Fictional study",
+  "status": "ready",
+  "stage": "converting_mira",
+  "capturedAt": "2026-11-10T14:25:32.475Z",
+  "updatedAt": "2026-11-10T14:25:32.475Z",
+  "artifacts": {
+    "pdf": "/api/papers/sample%3Arain-gardens/artifacts/paper.pdf",
+    "mira": "/api/papers/sample%3Arain-gardens/artifacts/paper.mira.jsonld"
+  },
+  "graphs": [
+    {
+      "file": "paper.mira.jsonld",
+      "url": "/api/papers/sample%3Arain-gardens/artifacts/paper.mira.jsonld",
+      "label": "Example map",
+      "provenance": "A hand-authored map for this fictional study."
+    }
+  ]
+}

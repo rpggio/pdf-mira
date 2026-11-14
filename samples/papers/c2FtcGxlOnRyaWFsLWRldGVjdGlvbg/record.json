@@ -1,0 +1,35 @@
+{
+  "id": "sample:trial-detection",
+  "descriptor": {
+    "title": "Problematic trial detection in ClinicalTrials.gov",
+    "author": "Hartgerink & George · RIO 2015 · CC BY 4.0"
+  },
+  "title": "Problematic trial detection in ClinicalTrials.gov",
+  "authors": "Hartgerink & George · RIO 2015 · CC BY 4.0",
+  "status": "ready",
+  "stage": "converting_mira",
+  "capturedAt": "2026-11-10T14:25:32.474Z",
+  "updatedAt": "2026-11-10T14:25:32.474Z",
+  "artifacts": {
+    "pdf": "/api/papers/sample%3Atrial-detection/artifacts/paper.pdf",
+    "mira": "/api/papers/sample%3Atrial-detection/artifacts/paper.mira.jsonld"
+  },
+  "graphs": [
+    {
+      "file": "paper.mira.jsonld",
+      "url": "/api/papers/sample%3Atrial-detection/artifacts/paper.mira.jsonld",
+      "label": "Detailed map",
+      "provenance": "Example map written by hand for this demo, in the generator's file format."
+    },
+    {
+      "file": "map-1.mira.jsonld",
+      "url": "/api/papers/sample%3Atrial-detection/artifacts/map-1.mira.jsonld",
+      "label": "Short map",
+      "provenance": "A second, shorter example map of the same paper, written by hand for this demo."
+    }
+  ],
+  "provenance": {
+    "source": "Bundled sample migrated to backend storage",
+    "importedAt": "2026-11-10T14:25:32.474Z"
+  }
+}

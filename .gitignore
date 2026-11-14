@@ -1,0 +1,14 @@
+node_modules
+dist
+*.local
+.DS_Store
+*.tsbuildinfo
+
+data/
+.env
+.env.*
+!.env.example
+
+.pnpm-store/
+
+/output/
