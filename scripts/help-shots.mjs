@@ -60,7 +60,7 @@ await shot("library", {});
 // Show a reproducible mid-generation state without making a model call.
 {
   const records = await page.evaluate(async () => (await fetch("/api/papers")).json());
-  const paper = records.find((record) => record.arxivId === "2407.20666v2");
+  const paper = records.find((record) => record.id === "sample:rain-gardens");
   if (!paper) throw new Error("Start the reader with the bundled sample library before capturing help images.");
   const example = { ...paper, status: "processing", stage: "converting_mira",
     progress: { fraction: 0.55, estimatedRemainingSeconds: 35 } };
@@ -81,7 +81,7 @@ await shot("library", {});
   console.log("wrote processing");
   await progressPage.close();
 }
-await page.click('[data-paper-id="sample:trial-detection"] .paper-title');
+await page.click('[data-paper-id="sample:rain-gardens"] .paper-title');
 await page.waitForSelector(".react-flow__node", { timeout: 30000 });
 // Use On screen for the examples of contextual shading and the compact map.
 await page.click('[aria-label="Which records"] button:first-child');

@@ -189,10 +189,10 @@ describe("durable ingestion", () => {
     const { store } = await setup(); await store.seedSamples(resolve("samples/papers")); await store.seedSamples(resolve("samples/papers"));
     const papers = await store.list(); expect(papers.length).toBe(readdirSync("samples/papers").length);
     expect(papers.every((p) => p.status === "ready")).toBe(true);
-    const trial = papers.find((p) => p.id === "sample:trial-detection")!; expect(trial.graphs).toHaveLength(2);
-    const graph = parseGraphFile("paper.mira.jsonld", JSON.parse(await readFile(join(store.dir(trial.id), "paper.mira.jsonld"), "utf8")));
+    const sample = papers.find((p) => p.id === "sample:rain-gardens")!; expect(sample.graphs).toHaveLength(2);
+    const graph = parseGraphFile("paper.mira.jsonld", JSON.parse(await readFile(join(store.dir(sample.id), "paper.mira.jsonld"), "utf8")));
     expect(graph.nodes.find((n) => n.id === "c1")?.anchors.length).toBeGreaterThan(0); expect(graph.warnings).toEqual([]);
-    expect(paperSource(trial).graphs).toHaveLength(2);
+    expect(paperSource(sample).graphs).toHaveLength(2);
     const { store: used, adapters } = await setup(); await used.submit("2501.11120"); await used.idle();
     expect(adapters.metadata).toHaveBeenCalled(); await used.seedSamples(resolve("samples/papers"));
     expect((await used.list()).map((p) => p.id)).toEqual(["2501.11120v2"]);

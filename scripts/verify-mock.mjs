@@ -14,7 +14,7 @@ try {
     child.stdout.on('data', b => { if (b.toString().includes('MOCK ONLY')) { clearTimeout(timer); resolve(); } });
   });
   const records = await (await fetch(base + '/api/papers')).json();
-  assert.equal(records.length, 3);
+  assert.equal(records.length, 1);
   for (const record of records) {
     assert.equal(record.arxivId, undefined);
     const bytes = Buffer.from(await (await fetch(base + record.artifacts.pdf)).arrayBuffer());
@@ -49,7 +49,7 @@ try {
     await page.waitForSelector('.hl-group .hl');
   }
   assert.deepEqual(external, [], 'Unexpected external browser requests');
-  console.log('PASS: three local sample PDFs, mock AI import, and four rendered maps with text/highlights; no external browser requests.');
+  console.log('PASS: the local sample PDF, mock AI import, and two rendered maps with text/highlights; no external browser requests.');
 } finally {
   await browser?.close();
   child.kill('SIGTERM');

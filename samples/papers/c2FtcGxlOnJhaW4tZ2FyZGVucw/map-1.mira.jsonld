@@ -1,0 +1,86 @@
+{
+  "@graph": [
+    {
+      "@id": "q1",
+      "@type": "Question",
+      "content": "Does planting reduce the water that leaves a plot during a storm of fixed size?",
+      "description": [
+        "q1-quote-0"
+      ]
+    },
+    {
+      "@id": "c1",
+      "@type": "Claim",
+      "content": "Planting reduced runoff in the test plots.",
+      "description": [
+        "c1-quote-0"
+      ]
+    },
+    {
+      "@id": "c2",
+      "@type": "Claim",
+      "content": "The benefit was largest where the soil was dry before the storm.",
+      "description": [
+        "c2-quote-0"
+      ]
+    },
+    {
+      "@id": "ev1",
+      "@type": "Evidence",
+      "content": "Planted plots released 18 liters less runoff per hour than bare plots.",
+      "description": [
+        "ev1-quote-0"
+      ]
+    },
+    {
+      "@id": "e0",
+      "@type": [
+        "RelationInstance",
+        "addresses"
+      ],
+      "source": "c1",
+      "destination": "q1",
+      "description": []
+    },
+    {
+      "@id": "e1",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev1",
+      "destination": "c1",
+      "description": []
+    },
+    {
+      "@id": "e2",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "c2",
+      "destination": "c1",
+      "description": []
+    },
+    {
+      "@id": "q1-quote-0",
+      "@type": "Item",
+      "content": "does planting reduce the water that leaves a plot during a storm of fixed size"
+    },
+    {
+      "@id": "c1-quote-0",
+      "@type": "Item",
+      "content": "Planted plots released less runoff than bare plots"
+    },
+    {
+      "@id": "c2-quote-0",
+      "@type": "Item",
+      "content": "the largest differences occurred where the soil was dry before the test"
+    },
+    {
+      "@id": "ev1-quote-0",
+      "@type": "Item",
+      "content": "Planted plots released 18 liters less runoff per hour than bare plots."
+    }
+  ]
+}

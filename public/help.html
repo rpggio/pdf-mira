@@ -7,7 +7,7 @@
 <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
 <!--
   Full user help. Also the reference description of the product for anyone
-  working on it (see AGENTS.md). The quick help (src/components/HelpDrawer.tsx)
+  working on it (see docs/development.md, Contributing). The quick help (src/components/HelpDrawer.tsx)
   links to the section ids below; test/help.test.ts checks those links.
   Illustrations: public/help/img, regenerated with `pnpm help:shots`.
 -->
@@ -119,7 +119,7 @@
 <h2 id="processing">Processing and errors</h2>
 <p>While a paper is processing, its card is dimmed and the progress bar shows the current step: <b>Fetching metadata</b>, <b>Fetching Markdown</b>, then <b>Generating map</b>. During <b>Generating map</b>, the bar shows an estimate of time left when one is available. The estimate can run out before the map is ready. The bar then continues without a countdown. The Library checks processing papers automatically. Reopening the Library resumes these checks. A paper’s <b>Abstract</b> is the authors’ arXiv abstract; it is not an AI summary.</p>
 <figure>
-  <img src="help/img/processing.png" width="316" height="219" alt="An arXiv paper card showing Generating map, About 35s left, and a partly filled progress bar." />
+  <img src="help/img/processing.png" width="316" height="173" alt="A paper card showing Generating map, About 35s left, and a partly filled progress bar." />
   <figcaption>The Library shows the current step and an estimate of time left while the map is being generated.</figcaption>
 </figure>
 <p>Before a new map is ready, the app leaves out cards that have no link to another card. If nothing connected remains, generation fails.</p>
@@ -192,8 +192,8 @@
 <p>In <b>On screen</b>, shading helps you spot which passages are visible.</p>
 <table>
   <tr><th>Looks like</th><th>Means</th></tr>
-  <tr><td><img src="help/img/card-onscreen.png" width="232" height="98" alt="A card in full color" /></td><td><b>Full color:</b> its passage is on screen now.</td></tr>
-  <tr><td><img src="help/img/card-faded.png" width="232" height="98" alt="A faded card" /></td><td><b>Faded:</b> its passage is elsewhere in the paper. Point at it to see it clearly and to darken its passage highlight.</td></tr>
+  <tr><td><img src="help/img/card-onscreen.png" width="224" height="79" alt="A card in full color" /></td><td><b>Full color:</b> its passage is on screen now.</td></tr>
+  <tr><td><img src="help/img/card-faded.png" width="224" height="96" alt="A faded card" /></td><td><b>Faded:</b> its passage is elsewhere in the paper. Point at it to see it clearly and to darken its passage highlight.</td></tr>
 </table>
 <h3 id="ids">Record keys</h3>
 <p>Each record has a short key at the top right of its card. The first question is <b>QUE-01</b>, the first claim is <b>CLM-01</b>, and the first evidence card is <b>EVD-01</b>. The same key appears in the outline, the paper's margin and on Sequence chips. Each map has its own keys.</p>
@@ -213,7 +213,7 @@
 <h3 id="from-pdf">From the paper to the map</h3>
 <p><b>Margin marks</b> sit halfway across the right edge of the paper, level with each passage that has a record. Each shows the record's key, and its color is the record's kind. Click a mark to select its record. In <b>Full</b> <b>Map</b>, this also centers the card at the current zoom. Turn the marks off with <b>margin marks</b> above the paper; passage highlights stay visible.</p>
 <figure>
-  <img src="help/img/margin-marks.png" width="360" height="200" alt="Colored labels such as CLM-03 and EVD-02 in the right margin beside lines of text." />
+  <img src="help/img/margin-marks.png" width="360" height="200" alt="Colored labels such as EVD-02 and PRO-03 in the right margin beside lines of text." />
   <figcaption>Margin marks overlap the paper edge halfway, one per record, labeled with its key.</figcaption>
 </figure>
 <p>Point at a mark or a card, or select one, and a dashed line joins the mark to its card.</p>

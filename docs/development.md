@@ -24,7 +24,7 @@ Other scripts, run with `node`:
 | `scripts/pdf-text.mjs <pdf>` | Print a PDF’s text per page, for writing and checking fixtures |
 | `scripts/make-sample-pdf.mjs <text> <pdf>` | Typeset a text file as a two-column PDF with headless Chrome (how the Rain Gardens sample was made from `scripts/rain-gardens.source.txt`) |
 
-For browser verification and screenshots, start the dev server with a fresh library. Set `PAPERS_DIR` to a new directory before starting it to seed a separate library. Set `HELP_BASE` to the server URL if it differs from `http://localhost:5178/`, and set `CHROME` to the Chrome executable if it differs from the script’s macOS default. See [the project guide](../AGENTS.md) for help updates.
+For browser verification and screenshots, start the dev server with a fresh library. Set `PAPERS_DIR` to a new directory before starting it to seed a separate library. Set `HELP_BASE` to the server URL if it differs from `http://localhost:5178/`, and set `CHROME` to the Chrome executable if it differs from the script’s macOS default. See [Contributing](#contributing) for help updates.
 
 Live verification writes to `PAPERS_DIR`. Use a fresh library to exercise conversion. A ready record for the same version is reused without another model call.
 
@@ -63,7 +63,7 @@ Each paper lives in a base64url-encoded directory under `PAPERS_DIR`, including 
 | Route | Behavior |
 | --- | --- |
 | `GET /api/papers` | List records by capture time, with errors last |
-| `POST /api/papers` | Accept `{"arxiv":"2407.20666v2"}`. Return 202 for processing or 200 for a cached ready or error record, with a polling URL in `Location` |
+| `POST /api/papers` | Accept `{"arxiv":"2501.11120v1"}`. Return 202 for processing or 200 for a cached ready or error record, with a polling URL in `Location` |
 | `GET /api/papers/{encoded-id}` | Return a known record at any status or 404 if it is missing |
 | `POST /api/papers/{encoded-id}/retry` | Retry an eligible failure under the job lock. Non-retryable failures return 409 |
 | `GET /api/papers/{encoded-id}/artifacts/{file}` | Serve published maps and bundled example PDFs |
@@ -89,7 +89,7 @@ The JSON output includes paths, SHA-256 hashes, parser warnings, isolated cards,
 To regenerate saved arXiv maps, use the library directory and server credential for that instance.
 
 ```sh
-node scripts/regenerate-papers.mjs 2407.20666v2
+node scripts/regenerate-papers.mjs 2501.11120v1
 ```
 
 Pass one or more versioned IDs to select papers. Omitting IDs regenerates all eligible ready arXiv papers in that library. The command reuses saved Markdown and publishes a new map after validation. A failed regeneration restores the previous ready record.
@@ -118,3 +118,22 @@ The service logs JSON events for visits, successful redemptions, and authenticat
 ## Isolated test harness
 
 See [local mock development](mock-development.md). `scripts/mock-reader.mjs` runs a separate Vite configuration with in-memory mock paper and AI endpoints, local bundled PDFs, and no production paper store. `scripts/verify-mock.mjs` checks sample rendering and mock import while blocking external browser requests.
+
+## Contributing
+
+**Keep the help current.** Every change a user can see or rely on updates the help in the same change:
+
+1. `public/help.html`: the full help, and the reference for what the product does. Add or edit the section, and keep the contents list (`<nav>`) in step with the section `id`s.
+2. `src/components/HelpDrawer.tsx`: the quick help. Short entries only, each linking (`more:`) to a section id in `help.html`.
+3. `public/help/img/`: the illustrations. If a change alters how the screen looks, start `pnpm dev` and run `pnpm help:shots` (`scripts/help-shots.mjs`). It recaptures every image and updates the image sizes in `help.html`. Open the changed images and check they still show what their captions say. Add new illustrations to that script.
+4. `README.md` for changes to local setup, and this guide for changes to internals.
+
+`test/help.test.ts` fails when a quick-help link, a contents entry or an image points at something missing. It cannot tell whether the words are still true, so reread the affected sections. Removing a feature removes its help. Write for people reading papers, not developers: plain words, short sentences, what is on screen today (no plans, no internals), and the labels exactly as the app shows them.
+
+**Conventions.**
+
+- The reader is read-only: it shows a map and never changes it. There is no editing, review or export. `effectiveGraph` (`src/lib/graph.ts`) only drops dangling links and flags unquoted ones as provisional.
+- The authors' words (PDF highlights) and the AI reconstruction (card text) stay visibly distinct. Guesses, such as estimated locations and inferred relations, are always marked as such.
+- Do not copy code from MIRA-extraction, which has no published license. Read only its output formats.
+- Keep personal data, credentials, hostnames, and third-party papers out of the repository. `data/` and `output/` are git-ignored scratch space.
+- Before finishing, run `pnpm typecheck`, `pnpm test`, and `pnpm build`.

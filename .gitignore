@@ -12,3 +12,8 @@ data/
 .pnpm-store/
 
 /output/
+
+# Agent instructions live in the private ops repo
+/AGENTS.md
+/CLAUDE.md
+/.claude/

@@ -1,5 +1,6 @@
 // Typeset a sample text file as a two-column, hyphenated PDF
-// (exercises column order + hyphenation in anchoring). Uses headless Chrome.
+// with a running header and footer (exercises column order, hyphenation, page
+// furniture and cross-page quotes in anchoring). Uses headless Chrome.
 import { readFileSync, writeFileSync, mkdtempSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
@@ -17,9 +18,12 @@ const body = paras
     return m ? `<p><b>${esc(m[1])}</b> ${esc(m[2])}</p>` : `<p>${esc(p)}</p>`;
   })
   .join("\n");
+const TITLE = title.replace(/"/g, "");
 const html = `<!doctype html><html lang="en"><meta charset="utf-8"><style>
-@page { size: Letter; margin: 0.9in 0.8in; }
-body { font: 10.5pt/1.42 Georgia, serif; color: #111; }
+@page { size: Letter; margin: 0.9in 0.8in;
+  @top-center { content: "${TITLE}"; font: italic 8.5pt Georgia, serif; color: #555; }
+  @bottom-center { content: "Fictional study, page " counter(page); font: 8.5pt Georgia, serif; color: #555; } }
+body { font: 12pt/1.55 Georgia, serif; color: #111; }
 h1 { font-size: 17pt; text-align: center; margin: 0 0 4pt; }
 .by { text-align: center; font-style: italic; margin-bottom: 18pt; }
 .cols { column-count: 2; column-gap: 0.32in; text-align: justify; hyphens: auto; }

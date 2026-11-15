@@ -1,41 +1,767 @@
 {
   "@graph": [
     {
-      "@id": "question",
+      "@id": "q1",
       "@type": "Question",
-      "content": "How does planting affect runoff in a simulated storm?",
-      "description": ["question-passage"]
+      "content": "Does planting reduce the water that leaves a plot during a storm of fixed size?",
+      "description": [
+        "q1-quote-0"
+      ]
     },
     {
-      "@id": "claim",
+      "@id": "q2",
+      "@type": "Question",
+      "content": "Does soil moisture before the storm change the answer?",
+      "description": [
+        "q2-quote-0"
+      ]
+    },
+    {
+      "@id": "q3",
+      "@type": "Question",
+      "content": "Can a small plot experiment say anything about the drainage of a whole street?",
+      "description": [
+        "q3-quote-0"
+      ]
+    },
+    {
+      "@id": "q4",
+      "@type": "Question",
+      "content": "What happens to neighborhood-scale flooding after several years of planting?",
+      "description": [
+        "q4-quote-0"
+      ]
+    },
+    {
+      "@id": "c1",
       "@type": "Claim",
-      "content": "Planting reduced runoff in the test plots."
+      "content": "Planting reduced runoff in the test plots.",
+      "description": [
+        "c1-quote-0"
+      ]
     },
     {
-      "@id": "evidence",
+      "@id": "c2",
+      "@type": "Claim",
+      "content": "The benefit of planting was largest where the soil was dry before the storm.",
+      "description": [
+        "c2-quote-0"
+      ]
+    },
+    {
+      "@id": "c3",
+      "@type": "Claim",
+      "content": "Deep roots and dry soil help a plot absorb rainfall.",
+      "description": [
+        "c3-quote-0"
+      ]
+    },
+    {
+      "@id": "c4",
+      "@type": "Claim",
+      "content": "The advantage disappears as soil approaches saturation.",
+      "description": [
+        "c4-quote-0"
+      ]
+    },
+    {
+      "@id": "c5",
+      "@type": "Claim",
+      "content": "A garden saturated by a long wet spell will help little in the next storm.",
+      "description": [
+        "c5-quote-0"
+      ]
+    },
+    {
+      "@id": "c6",
+      "@type": "Claim",
+      "content": "Whether rain gardens reduce flooding across a neighborhood is still open.",
+      "description": [
+        "c6-quote-0"
+      ]
+    },
+    {
+      "@id": "c7",
+      "@type": "Claim",
+      "content": "A two-meter plot cannot stand in for a street.",
+      "description": [
+        "c7-quote-0"
+      ]
+    },
+    {
+      "@id": "c8",
+      "@type": "Claim",
+      "content": "The benefit may grow as plantings mature.",
+      "description": [
+        "c8-quote-0"
+      ]
+    },
+    {
+      "@id": "c9",
+      "@type": "Claim",
+      "content": "Leaf interception probably played only a small part.",
+      "description": [
+        "c9-quote-0"
+      ]
+    },
+    {
+      "@id": "c10",
+      "@type": "Claim",
+      "content": "Planted soil may have been looser to begin with.",
+      "description": [
+        "c10-quote-0"
+      ]
+    },
+    {
+      "@id": "c11",
+      "@type": "Claim",
+      "content": "Thinner plant cover went with more variable runoff from planted plots.",
+      "description": []
+    },
+    {
+      "@id": "c12",
+      "@type": "Claim",
+      "content": "Roots keep soil pores open and connected.",
+      "description": [
+        "c12-quote-0"
+      ]
+    },
+    {
+      "@id": "ev1",
       "@type": "Evidence",
-      "content": "The planted plots produced 18 liters less runoff per hour.",
-      "description": ["evidence-passage"]
+      "content": "Planted plots released 18 liters less runoff per hour than bare plots.",
+      "description": [
+        "ev1-quote-0"
+      ]
     },
     {
-      "@id": "claim-answers-question",
-      "@type": ["RelationInstance", "addresses"],
-      "source": "claim",
-      "destination": "question"
+      "@id": "ev2",
+      "@type": "Evidence",
+      "content": "On dry days the mean difference was 27 liters.",
+      "description": [
+        "ev2-quote-0"
+      ]
     },
     {
-      "@id": "evidence-supports-claim",
-      "@type": ["RelationInstance", "supports"],
-      "source": "evidence",
-      "destination": "claim"
+      "@id": "ev3",
+      "@type": "Evidence",
+      "content": "On wet days the mean difference was 9 liters.",
+      "description": [
+        "ev3-quote-0"
+      ]
     },
     {
-      "@id": "question-passage",
+      "@id": "ev4",
+      "@type": "Evidence",
+      "content": "Pairwise differences ranged from 4 to 34 liters, always favoring planted plots.",
+      "description": [
+        "ev4-quote-0"
+      ]
+    },
+    {
+      "@id": "ev5",
+      "@type": "Evidence",
+      "content": "On dry days planted plots released almost no water for about twenty minutes.",
+      "description": [
+        "ev5-quote-0"
+      ]
+    },
+    {
+      "@id": "ev6",
+      "@type": "Evidence",
+      "content": "On wet days both kinds of plot released water within five minutes.",
+      "description": [
+        "ev6-quote-0"
+      ]
+    },
+    {
+      "@id": "ev7",
+      "@type": "Evidence",
+      "content": "Pairs with the driest soil showed the largest differences.",
+      "description": [
+        "ev7-quote-0"
+      ]
+    },
+    {
+      "@id": "ev8",
+      "@type": "Evidence",
+      "content": "Planted-plot runoff varied about 25 percent, bare-plot runoff about 15 percent.",
+      "description": [
+        "ev8-quote-0"
+      ]
+    },
+    {
+      "@id": "ev9",
+      "@type": "Evidence",
+      "content": "Two patchy planted plots released more than the others but less than their bare partners.",
+      "description": [
+        "ev9-quote-0"
+      ]
+    },
+    {
+      "@id": "s1",
+      "@type": "Study",
+      "content": "Paired plot experiment: twelve plots, six planted and six bare, under a one-hour simulated downpour.",
+      "description": [
+        "s1-quote-0",
+        "s1-quote-1"
+      ]
+    },
+    {
+      "@id": "s2",
+      "@type": "Study",
+      "content": "Soil moisture readings at ten centimeters depth before each downpour.",
+      "description": [
+        "s2-quote-0"
+      ]
+    },
+    {
+      "@id": "p1",
+      "@type": "Protocol",
+      "content": "Sprinkler rig delivering 40 millimeters in one hour, checked with catch cups.",
+      "description": [
+        "p1-quote-0"
+      ]
+    },
+    {
+      "@id": "p2",
+      "@type": "Protocol",
+      "content": "Plots paired by position, with a coin toss deciding which was planted.",
+      "description": [
+        "p2-quote-0"
+      ]
+    },
+    {
+      "@id": "p3",
+      "@type": "Protocol",
+      "content": "Dry days after five days without rain; wet days after ten millimeters the evening before.",
+      "description": [
+        "p3-quote-0"
+      ]
+    },
+    {
+      "@id": "p4",
+      "@type": "Protocol",
+      "content": "Runoff collected in buckets for one hour and weighed.",
+      "description": [
+        "p4-quote-0"
+      ]
+    },
+    {
+      "@id": "p5",
+      "@type": "Protocol",
+      "content": "Seedlings set the spring before the test and watered by hand until established.",
+      "description": [
+        "p5-quote-0"
+      ]
+    },
+    {
+      "@id": "r1",
+      "@type": "Request",
+      "content": "Run larger and longer field trials of rain gardens.",
+      "description": [
+        "r1-quote-0"
+      ]
+    },
+    {
+      "@id": "e0",
+      "@type": [
+        "RelationInstance",
+        "addresses"
+      ],
+      "source": "c1",
+      "destination": "q1",
+      "description": []
+    },
+    {
+      "@id": "e1",
+      "@type": [
+        "RelationInstance",
+        "addresses"
+      ],
+      "source": "c2",
+      "destination": "q2",
+      "description": []
+    },
+    {
+      "@id": "e2",
+      "@type": [
+        "RelationInstance",
+        "addresses"
+      ],
+      "source": "c7",
+      "destination": "q3",
+      "description": []
+    },
+    {
+      "@id": "e3",
+      "@type": [
+        "RelationInstance",
+        "addresses"
+      ],
+      "source": "c6",
+      "destination": "q4",
+      "description": []
+    },
+    {
+      "@id": "e4",
+      "@type": [
+        "RelationInstance",
+        "addresses"
+      ],
+      "source": "c8",
+      "destination": "q4",
+      "description": []
+    },
+    {
+      "@id": "e5",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev1",
+      "destination": "c1",
+      "description": [
+        "e5-quote-0"
+      ]
+    },
+    {
+      "@id": "e6",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev4",
+      "destination": "c1",
+      "description": []
+    },
+    {
+      "@id": "e7",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "c3",
+      "destination": "c1",
+      "description": []
+    },
+    {
+      "@id": "e8",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev2",
+      "destination": "c2",
+      "description": []
+    },
+    {
+      "@id": "e9",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev3",
+      "destination": "c2",
+      "description": []
+    },
+    {
+      "@id": "e10",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev7",
+      "destination": "c2",
+      "description": []
+    },
+    {
+      "@id": "e11",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "c4",
+      "destination": "c2",
+      "description": []
+    },
+    {
+      "@id": "e12",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev5",
+      "destination": "c3",
+      "description": []
+    },
+    {
+      "@id": "e13",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "c12",
+      "destination": "c3",
+      "description": []
+    },
+    {
+      "@id": "e14",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev6",
+      "destination": "c4",
+      "description": []
+    },
+    {
+      "@id": "e15",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "c4",
+      "destination": "c5",
+      "description": []
+    },
+    {
+      "@id": "e16",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev8",
+      "destination": "c11",
+      "description": []
+    },
+    {
+      "@id": "e17",
+      "@type": [
+        "RelationInstance",
+        "supports"
+      ],
+      "source": "ev9",
+      "destination": "c11",
+      "description": []
+    },
+    {
+      "@id": "e18",
+      "@type": [
+        "RelationInstance",
+        "opposes"
+      ],
+      "source": "c9",
+      "destination": "c3",
+      "description": []
+    },
+    {
+      "@id": "e19",
+      "@type": [
+        "RelationInstance",
+        "opposes"
+      ],
+      "source": "c10",
+      "destination": "c3",
+      "description": []
+    },
+    {
+      "@id": "e20",
+      "@type": [
+        "RelationInstance",
+        "opposes"
+      ],
+      "source": "c7",
+      "destination": "c6",
+      "description": []
+    },
+    {
+      "@id": "e21",
+      "@type": [
+        "RelationInstance",
+        "grounds"
+      ],
+      "source": "s1",
+      "destination": "ev1",
+      "description": []
+    },
+    {
+      "@id": "e22",
+      "@type": [
+        "RelationInstance",
+        "grounds"
+      ],
+      "source": "s1",
+      "destination": "ev2",
+      "description": []
+    },
+    {
+      "@id": "e23",
+      "@type": [
+        "RelationInstance",
+        "grounds"
+      ],
+      "source": "s1",
+      "destination": "ev3",
+      "description": []
+    },
+    {
+      "@id": "e24",
+      "@type": [
+        "RelationInstance",
+        "grounds"
+      ],
+      "source": "s1",
+      "destination": "ev4",
+      "description": []
+    },
+    {
+      "@id": "e25",
+      "@type": [
+        "RelationInstance",
+        "grounds"
+      ],
+      "source": "s2",
+      "destination": "ev7",
+      "description": []
+    },
+    {
+      "@id": "e26",
+      "@type": [
+        "RelationInstance",
+        "follows"
+      ],
+      "source": "s1",
+      "destination": "p1",
+      "description": []
+    },
+    {
+      "@id": "e27",
+      "@type": [
+        "RelationInstance",
+        "follows"
+      ],
+      "source": "s1",
+      "destination": "p2",
+      "description": []
+    },
+    {
+      "@id": "e28",
+      "@type": [
+        "RelationInstance",
+        "follows"
+      ],
+      "source": "s1",
+      "destination": "p3",
+      "description": []
+    },
+    {
+      "@id": "e29",
+      "@type": [
+        "RelationInstance",
+        "follows"
+      ],
+      "source": "s1",
+      "destination": "p4",
+      "description": []
+    },
+    {
+      "@id": "e30",
+      "@type": [
+        "RelationInstance",
+        "follows"
+      ],
+      "source": "s1",
+      "destination": "p5",
+      "description": []
+    },
+    {
+      "@id": "e31",
+      "@type": [
+        "RelationInstance",
+        "request_for"
+      ],
+      "source": "r1",
+      "destination": "s1",
+      "description": []
+    },
+    {
+      "@id": "e32",
+      "@type": [
+        "RelationInstance",
+        "request_target"
+      ],
+      "source": "r1",
+      "destination": "c6",
+      "description": []
+    },
+    {
+      "@id": "q1-quote-0",
+      "@type": "Item",
+      "content": "does planting reduce the water that leaves a plot during a storm of fixed size"
+    },
+    {
+      "@id": "q2-quote-0",
+      "@type": "Item",
+      "content": "does the soil moisture before the storm change the answer"
+    },
+    {
+      "@id": "q3-quote-0",
+      "@type": "Item",
+      "content": "can a small plot experiment say anything about the drainage of a whole street"
+    },
+    {
+      "@id": "q4-quote-0",
       "@type": "Item",
       "content": "What happens to neighborhood-scale flooding after several years of planting?"
     },
     {
-      "@id": "evidence-passage",
+      "@id": "c1-quote-0",
+      "@type": "Item",
+      "content": "Planted plots released less runoff than bare plots"
+    },
+    {
+      "@id": "c2-quote-0",
+      "@type": "Item",
+      "content": "the largest differences occurred where the soil was dry before the test"
+    },
+    {
+      "@id": "c3-quote-0",
+      "@type": "Item",
+      "content": "Deep roots and dry soil can help a plot absorb rainfall."
+    },
+    {
+      "@id": "c4-quote-0",
+      "@type": "Item",
+      "content": "the advantage disappeared as the soil approached saturation"
+    },
+    {
+      "@id": "c5-quote-0",
+      "@type": "Item",
+      "content": "a garden saturated by a long rainy week will help little during the next storm"
+    },
+    {
+      "@id": "c6-quote-0",
+      "@type": "Item",
+      "content": "Whether rain gardens reduce flooding across a neighborhood remains an open question for larger and longer trials."
+    },
+    {
+      "@id": "c7-quote-0",
+      "@type": "Item",
+      "content": "A two-meter plot has no neighbors upslope and no pipes beneath it."
+    },
+    {
+      "@id": "c8-quote-0",
+      "@type": "Item",
+      "content": "we regard it as a prediction for future work, not a finding"
+    },
+    {
+      "@id": "c9-quote-0",
+      "@type": "Item",
+      "content": "Leaf interception probably played a small part"
+    },
+    {
+      "@id": "c10-quote-0",
+      "@type": "Item",
+      "content": "Soil looseness is harder to dismiss"
+    },
+    {
+      "@id": "c12-quote-0",
+      "@type": "Item",
+      "content": "roots keep the pores open and connected"
+    },
+    {
+      "@id": "ev1-quote-0",
+      "@type": "Item",
+      "content": "Planted plots released 18 liters less runoff per hour than bare plots."
+    },
+    {
+      "@id": "ev2-quote-0",
+      "@type": "Item",
+      "content": "On dry days, the mean difference grew to 27 liters."
+    },
+    {
+      "@id": "ev3-quote-0",
+      "@type": "Item",
+      "content": "On wet days, the difference shrank to 9 liters."
+    },
+    {
+      "@id": "ev4-quote-0",
+      "@type": "Item",
+      "content": "The smallest paired difference was 4 liters, and the largest was 34 liters."
+    },
+    {
+      "@id": "ev5-quote-0",
+      "@type": "Item",
+      "content": "The planted plots absorbed the first part of the downpour almost entirely, and they started to release water only after about twenty minutes."
+    },
+    {
+      "@id": "ev6-quote-0",
+      "@type": "Item",
+      "content": "Both kinds of plot began to release water within five minutes, because the soil in each was already close to its limit."
+    },
+    {
+      "@id": "ev7-quote-0",
+      "@type": "Item",
+      "content": "the pairs with the lowest soil moisture before the downpour showed the largest differences in runoff"
+    },
+    {
+      "@id": "ev8-quote-0",
+      "@type": "Item",
+      "content": "Runoff from planted plots varied more, by about twenty-five percent"
+    },
+    {
+      "@id": "ev9-quote-0",
+      "@type": "Item",
+      "content": "Two planted plots with patchy cover released more water than the others, but still less than their bare partners."
+    },
+    {
+      "@id": "s1-quote-0",
+      "@type": "Item",
+      "content": "We measured stormwater leaving twelve plots after a controlled downpour."
+    },
+    {
+      "@id": "s1-quote-1",
+      "@type": "Item",
+      "content": "Six plots contained grasses and deep-rooted flowers."
+    },
+    {
+      "@id": "s2-quote-0",
+      "@type": "Item",
+      "content": "We also took a soil moisture reading at ten centimeters depth in each plot just before the downpour started, using a handheld probe."
+    },
+    {
+      "@id": "p1-quote-0",
+      "@type": "Item",
+      "content": "The rig applied the equivalent of forty millimeters of rain in one hour"
+    },
+    {
+      "@id": "p2-quote-0",
+      "@type": "Item",
+      "content": "Within each pair, a coin toss decided which plot was planted."
+    },
+    {
+      "@id": "p3-quote-0",
+      "@type": "Item",
+      "content": "On wet days we watered every plot the previous evening with ten millimeters of water."
+    },
+    {
+      "@id": "p4-quote-0",
+      "@type": "Item",
+      "content": "We collected the runoff in buckets for one hour and weighed each bucket on a hanging scale."
+    },
+    {
+      "@id": "p5-quote-0",
+      "@type": "Item",
+      "content": "The seedlings were set in the plots the spring before the test and watered by hand until they were established."
+    },
+    {
+      "@id": "r1-quote-0",
+      "@type": "Item",
+      "content": "Larger field trials would be needed to estimate the effect on a neighborhood drainage system."
+    },
+    {
+      "@id": "e5-quote-0",
       "@type": "Item",
       "content": "Planted plots released 18 liters less runoff per hour than bare plots."
     }

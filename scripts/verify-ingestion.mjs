@@ -12,15 +12,15 @@ const pause = (ms) => new Promise((r) => setTimeout(r, ms));
 try {
   // First verify actual backend storage and reader artifacts.
   await page.goto(base, { waitUntil: "networkidle0" });
-  await page.waitForSelector('[data-paper-id="sample:trial-detection"] .paper-title');
-  const sample = await page.evaluate(async () => (await (await fetch("/api/papers")).json()).find((p) => p.id === "sample:trial-detection"));
+  await page.waitForSelector('[data-paper-id="sample:rain-gardens"] .paper-title');
+  const sample = await page.evaluate(async () => (await (await fetch("/api/papers")).json()).find((p) => p.id === "sample:rain-gardens"));
   assert.equal(sample.status, "ready"); assert.equal(sample.graphs.length, 2);
   assert.equal(await page.$('input[type="file"]'), null, "PDF upload is absent");
-  await page.click('[data-paper-id="sample:trial-detection"] .paper-title');
+  await page.click('[data-paper-id="sample:rain-gardens"] .paper-title');
   await page.waitForSelector(".react-flow__node");
   const upload = await page.$('.side-pane input[type="file"]');
   assert.ok(upload, "+ map remains available");
-  await upload.uploadFile(new URL("../samples/papers/c2FtcGxlOnRyaWFsLWRldGVjdGlvbg/paper.mira.jsonld", import.meta.url).pathname);
+  await upload.uploadFile(new URL("../samples/papers/c2FtcGxlOnJhaW4tZ2FyZGVucw/paper.mira.jsonld", import.meta.url).pathname);
   await page.waitForFunction(() => document.querySelector(".graph-select").options.length === 3);
   console.log("PASS backend sample list, stored PDF/map reader, additional map upload");
 
@@ -32,7 +32,7 @@ try {
     await page.waitForSelector(".react-flow__node", { timeout: 60000 });
     const selectedLabel = () => page.$eval(".graph-select", (select) => select.selectedOptions[0].textContent);
     assert.ok((await selectedLabel()).startsWith("MIRA-extraction"));
-    await (await page.$('.side-pane input[type="file"]')).uploadFile(new URL("../samples/papers/c2FtcGxlOnRyaWFsLWRldGVjdGlvbg/map-1.mira.jsonld", import.meta.url).pathname);
+    await (await page.$('.side-pane input[type="file"]')).uploadFile(new URL("../samples/papers/c2FtcGxlOnJhaW4tZ2FyZGVucw/map-1.mira.jsonld", import.meta.url).pathname);
     await page.waitForFunction(() => document.querySelector(".graph-select").options.length === 2);
     await page.click('[title="Back to library"]');
     await page.waitForSelector(`[data-paper-id="${id}"].ready .paper-title`);

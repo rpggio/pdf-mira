@@ -18,8 +18,18 @@
     {
       "file": "paper.mira.jsonld",
       "url": "/api/papers/sample%3Arain-gardens/artifacts/paper.mira.jsonld",
-      "label": "Example map",
-      "provenance": "A hand-authored map for this fictional study."
+      "label": "Detailed map",
+      "provenance": "Example map written by hand for this fictional study, in the generator's file format."
+    },
+    {
+      "file": "map-1.mira.jsonld",
+      "url": "/api/papers/sample%3Arain-gardens/artifacts/map-1.mira.jsonld",
+      "label": "Short map",
+      "provenance": "A second, shorter example map of the same study, written by hand."
     }
-  ]
+  ],
+  "provenance": {
+    "source": "Bundled sample migrated to backend storage",
+    "importedAt": "2026-11-10T14:25:32.474Z"
+  }
 }

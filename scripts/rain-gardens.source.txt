@@ -1,9 +1,59 @@
 Measuring Runoff from Rain Gardens
 
-Abstract. We compared how much water left planted and bare soil plots during a simulated storm. Planted plots released less water, with the largest differences in plots whose soil was dry before the test.
+Abstract. We compared how much water left planted and bare soil plots during a simulated storm. Planted plots released less water, with the largest differences in plots whose soil was dry before the test. The pattern held in every pair of plots, although the experiment was small, short, and run in a single field. We discuss what the result does and does not say about neighborhood drainage.
 
-1. Methods. We measured stormwater leaving twelve plots after a controlled downpour. Six plots contained grasses and deep-rooted flowers. The other six contained bare soil from the same field. We collected the runoff in buckets for one hour.
+1. Introduction. Paved surfaces send rainfall to storm drains within minutes. When a heavy storm arrives, the drains and streams downstream can receive more water than they can carry. Cities have therefore started to build rain gardens, which are shallow planted basins placed where water would otherwise run off a roof, a road, or a parking lot.
 
-2. Results. Planted plots released 18 liters less runoff per hour than bare plots. The difference was smallest when both kinds of plot had been watered the previous evening.
+The idea behind a rain garden is simple. Plant roots open channels in the soil, and the soil beneath a healthy garden can hold water that would otherwise flow away. Designers often cite large reductions in runoff, yet many published figures come from models or from sites that differ in slope, soil, and age. Few reports compare planted and unplanted ground that started a storm under the same conditions.
 
-3. Interpretation. Deep roots and dry soil can help a plot absorb rainfall. The test used small plots under controlled conditions. Larger field trials would be needed to estimate the effect on a neighborhood drainage system.
+We asked three questions. First, does planting reduce the water that leaves a plot during a storm of fixed size? Second, does the soil moisture before the storm change the answer? Third, can a small plot experiment say anything about the drainage of a whole street? We report the first two answers directly and treat the third as a limit on what the experiment can claim.
+
+2. Methods. We measured stormwater leaving twelve plots after a controlled downpour. Six plots contained grasses and deep-rooted flowers. The other six contained bare soil from the same field. We collected the runoff in buckets for one hour.
+
+Site description. The field is a flat, mown meadow on loamy soil. We marked twelve square plots, each two meters on a side, in two rows of six. Neighboring plots were separated by a low plastic barrier pushed twenty centimeters into the ground, so that water could not move sideways between them. Each plot sloped gently toward one edge, where a shallow gutter led to a collection bucket.
+
+Planting. The planted plots received a mix of three native grasses and four deep-rooted flowers. The seedlings were set in the plots the spring before the test and watered by hand until they were established. By the day of the test, the planted plots had a closed canopy and roots that reached about forty centimeters. We left the bare plots unplanted and removed every sprout by hand throughout the season, so that bare plots stayed bare.
+
+Pairing and assignment. We paired the plots by position, so that each planted plot had a bare neighbor in the same row. Within each pair, a coin toss decided which plot was planted. This kept the planting from lining up with any gradient in the field, such as a wetter corner near the hedge.
+
+Storm simulation. A sprinkler rig delivered the same downpour to every plot. The rig applied the equivalent of forty millimeters of rain in one hour, which is a heavy storm for the region. Before each test, we checked the output of the rig with catch cups placed at the corners of the plot, and we stopped any test in which the cups differed by more than ten percent.
+
+Moisture conditions. We ran the downpour on two kinds of day. On dry days the field had received no rain for at least five days. On wet days we watered every plot the previous evening with ten millimeters of water. Each pair of plots was tested once under each condition, in random order, with a rest of one week between tests.
+
+Measurement. We collected the runoff in buckets for one hour and weighed each bucket on a hanging scale. We converted weight to liters, and we report the total for the hour. We also took a soil moisture reading at ten centimeters depth in each plot just before the downpour started, using a handheld probe.
+
+3. Results. Planted plots released 18 liters less runoff per hour than bare plots. The difference was smallest when both kinds of plot had been watered the previous evening.
+
+Overall runoff. Across all pairs and both moisture conditions, bare plots released a mean of 61 liters in the hour, and planted plots released a mean of 43 liters. Planted plots released less runoff than bare plots in all twelve of the paired tests. The smallest paired difference was 4 liters, and the largest was 34 liters.
+
+Dry days. On dry days, the mean difference grew to 27 liters. Bare plots released a mean of 68 liters, while planted plots released a mean of 41 liters. The planted plots absorbed the first part of the downpour almost completely, and they began to release water only after about twenty minutes.
+
+Wet days. On wet days, the difference shrank to 9 liters. Bare plots released a mean of 54 liters, and planted plots released a mean of 45 liters. Both kinds of plot began to release water within five minutes, because the soil in each was already close to its limit.
+
+Soil moisture and the size of the difference. Across the twelve paired dry and wet tests, the pairs with the lowest soil moisture before the downpour showed the largest differences in runoff. The relationship was steady rather than abrupt. We did not fit a formal model, because twelve paired tests are too few to separate moisture from the effect of the particular week in which a test was made.
+
+Variability. Runoff from bare plots varied by about fifteen percent from pair to pair. Runoff from planted plots varied more, by about twenty-five percent, and the more variable plots were those with thinner plant cover. Two planted plots with patchy cover released more water than the others, but still less than their bare partners.
+
+Table 1. Mean runoff in liters per hour by plot type and moisture condition. Dry days: bare 68, planted 41. Wet days: bare 54, planted 45. All tests: bare 61, planted 43.
+
+4. Discussion. The result supports the idea that planting reduces runoff in a controlled storm, and it suggests a mechanism. Deep roots and dry soil can help a plot absorb rainfall. In our plots, the planted soil took in more water before it began to flow, and the advantage disappeared as the soil approached saturation.
+
+Why moisture matters. A dry soil has empty pores that fill during the first part of a downpour, and roots keep the pores open and connected. Once the pores are full, water has nowhere to go but across the surface, and a planted plot behaves much like a bare one. This is why the difference between planted and bare plots was small on wet days. The same reasoning predicts that a garden saturated by a long rainy week will help little during the next storm.
+
+Alternative explanations. Planted plots might have released less water because plants themselves drew water from the soil, because their leaves caught some of the spray, or because the planted soil was looser to begin with. We cannot exclude all of these. Leaf interception probably played a small part, since the rig produced large drops and the leaves were small. Soil looseness is harder to dismiss, because the plots shared a field but not a planting history. The bare plots were kept bare for a single season, and roots in the planted plots had one season of growth.
+
+Comparison with earlier reports. Our dry-day difference is smaller than some reductions quoted for mature gardens, and our wet-day difference is smaller still. We think the gap reflects the age of our plantings. Mature gardens have deeper roots, more organic matter, and a longer record of root channels. We did not test this directly, and we regard it as a prediction for future work, not a finding.
+
+5. Limitations. The test used small plots under controlled conditions. Larger field trials would be needed to estimate the effect on a neighborhood drainage system.
+
+Scale. A two-meter plot has no neighbors upslope and no pipes beneath it. A street has both. Water that a garden absorbs on one side of a street may be replaced by water that arrives from another, and the net effect depends on how the gardens are arranged and connected to the drains.
+
+Time. We ran each test once in each condition, in a single season. We do not know how the effect changes as plants mature, as soil compacts, or as sediment fills the pores. A garden that performs well in its second year may perform differently in its tenth.
+
+Storm shape. A sprinkler delivers steady rain, while real storms rise and fall. A short, intense burst would test the speed at which water enters the soil, and a long, gentle rain would test its capacity. The forty millimeter storm we used mixes both, and we cannot say which matters more in practice.
+
+Field and soil. We worked in one field with one kind of soil. Clay soils drain slowly, and sandy soils drain fast, so the baseline runoff and the benefit of roots could both differ in other places.
+
+6. Conclusion. We found that planted plots released less water than bare plots in a simulated storm. Planted plots released less runoff than bare plots in every pair we tested, and the largest differences occurred where the soil was dry before the test. The result is consistent with the idea that roots help dry soil take in rain, and it gives no support to the idea that a garden helps much after a long wet spell. Whether rain gardens reduce flooding across a neighborhood remains an open question for larger and longer trials.
+
+Acknowledgments. This is a fictional study written to test a paper reader. The people, places, and measurements in it are invented, and no real experiment was carried out.

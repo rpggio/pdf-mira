@@ -31,7 +31,7 @@ pnpm build
 
 - `src/`: the browser reader (React, pdf.js, React Flow).
 - `server/`: the paper API and optional invite gate, mounted into Vite’s dev and preview servers. There is no separate backend process.
-- `samples/`: example papers and maps that seed an empty library.
+- `samples/`: a fictional example paper and maps that seed an empty library.
 - `public/help.html`, `public/help/img/`: the full user help and its images.
 - `scripts/`: verification, screenshot, and maintenance scripts.
 - `test/`: vitest tests.
@@ -41,14 +41,14 @@ This repository holds the whole project. It has no private deployment settings, 
 
 - [User help](public/help.html), also available under **Help** in the app
 - [Development guide](docs/development.md): API, storage, configuration, and reader internals
-- [Agent guide](AGENTS.md): conventions, and the rule to update the help with every visible change
-- [Sample credits](samples/README.md)
+- [Contributing](docs/development.md#contributing): conventions, and the rule to update the help with every visible change
+- [Sample](samples/README.md)
 - [Ideas](docs/ideas.md)
 
 Set `PDF_MIRA_CONTACT_EMAIL` in the server environment to enable **Feedback** and, on deployments with the invite gate, **Request access**.
 
 ## License
 
-The project code is available under the [MIT License](LICENSE). The bundled research papers in `samples/` are not part of that grant; the [sample credits](samples/README.md) give each one's license.
+The project and its bundled fictional sample are available under the [MIT License](LICENSE). The project holds no third-party papers; papers you import stay in your local library.
 
 The map generator depends on [MIRA-extraction](https://github.com/MIRA-science/MIRA-extraction), which has not published a license. It is installed from its repository and is not part of this project's code or license. Check with its authors before redistributing a package or image that bundles it.

@@ -10,11 +10,11 @@ import { layoutGraph } from "../src/lib/layout.ts";
 import { firstPosition, interp, SEQ, sequenceLayout, syncMap } from "../src/lib/sequence.ts";
 import { adjacency, childrenOf, parentsOf, visibleSet, FEW_ON_SCREEN } from "../src/lib/focus.ts";
 
-describe("sequence layout (trial-detection)", async () => {
-  const data = new Uint8Array(readFileSync("samples/papers/c2FtcGxlOnRyaWFsLWRldGVjdGlvbg/paper.pdf"));
+describe("sequence layout (rain-gardens)", async () => {
+  const data = new Uint8Array(readFileSync("samples/papers/c2FtcGxlOnJhaW4tZ2FyZGVucw/paper.pdf"));
   const doc = await getDocument({ data, useSystemFonts: true, verbosity: 0 }).promise;
   const idx = buildIndex(await extractPages(doc as never));
-  const g = parseGraphFile("paper.mira.jsonld", JSON.parse(readFileSync("samples/papers/c2FtcGxlOnRyaWFsLWRldGVjdGlvbg/paper.mira.jsonld", "utf8")));
+  const g = parseGraphFile("paper.mira.jsonld", JSON.parse(readFileSync("samples/papers/c2FtcGxlOnJhaW4tZ2FyZGVucw/paper.mira.jsonld", "utf8")));
   const eff = effectiveGraph(g);
   const anchors = resolveAll(idx, eff);
   const L = sequenceLayout(eff, anchors, layoutGraph({ nodes: eff.nodes, edges: eff.edges }));
@@ -34,7 +34,7 @@ describe("sequence layout (trial-detection)", async () => {
     const x0 = L.rows.find((r) => r.level === 0)!.x;
     for (const r of L.rows) expect(r.x - x0).toBe(r.level * SEQ.indent);
     const q = L.rows.find((r) => r.id === "q1")!;
-    const ev = L.rows.find((r) => r.id === "ev5")!;
+    const ev = L.rows.find((r) => r.id === "ev1")!;
     expect(q.level).toBeLessThan(ev.level);
   });
 
