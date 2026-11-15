@@ -2,6 +2,14 @@
 
 Read a research PDF beside a generated map of its questions, claims, and evidence. Scroll the paper to see the relevant part of the argument, or select a card to find its passage in the PDF. The reader keeps the authors’ words distinct from the AI-generated interpretation and marks estimated locations and inferred links.
 
+## Quick start
+
+```sh
+pnpm install --frozen-lockfile && pnpm dev
+```
+
+This is the default local setup: no sign-in, no API key, and no network after install. It opens the bundled fictional sample paper and its maps at [localhost:5178](http://localhost:5178/). The invite gate and the OpenRouter key are optional extras, covered below. For a fully isolated run with fixed mock AI results, use `pnpm dev:mock` instead.
+
 ## Run locally
 
 Requirements: Node.js 24, pnpm 11, and Git. The browser checks and screenshot script also need Chrome or Chromium.
