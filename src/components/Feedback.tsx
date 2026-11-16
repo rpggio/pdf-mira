@@ -1,11 +1,11 @@
 const GITHUB_URL = "https://github.com/rpggio/pdf-mira";
 
-const icon = { width: 24, height: 24, viewBox: "0 0 24 24", "aria-hidden": true, focusable: false } as const;
+const icon = { width: 28, height: 28, viewBox: "0 0 24 24", "aria-hidden": true, focusable: false } as const;
 
 /** Footer links: source on GitHub always, Feedback when a contact address is configured. */
 export function Feedback({ email }: { email: string | null }) {
   return (
-    <footer className="site-footer small">
+    <footer className="site-footer">
       {email && (
         <a href={`mailto:${email}`}>
           <svg {...icon} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>

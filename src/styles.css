@@ -152,8 +152,8 @@ select {
   justify-content: center;
   align-items: center;
   gap: 28px;
-  padding: 14px 0;
-  font-size: 17px;
+  padding: 18px 0 32px;
+  font-size: 20px;
   background: var(--bg);
   border-top: 1px solid var(--line);
 }
