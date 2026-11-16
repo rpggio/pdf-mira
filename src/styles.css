@@ -168,6 +168,14 @@ select {
   font: 600 28px/1.2 var(--serif);
   margin: 0 0 8px;
 }
+.library-icon + span { flex: 1; }
+.help-link {
+  flex: none;
+  display: inline-flex;
+  color: var(--muted);
+}
+.help-link:hover { color: inherit; }
+.licensing-link { margin: -4px 0 10px; }
 .library-icon {
   flex: none;
   border-radius: 8px;

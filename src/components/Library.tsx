@@ -113,12 +113,15 @@ export function Library({ onOpen, gated, contactEmail }: { onOpen(p: PaperSource
       <h1>
         <img className="library-icon" src={`${import.meta.env.BASE_URL}app-icon.png`} width={40} height={40} alt="" />
         <span>PDF/MIRA graph viewer</span>
+        <a className="help-link" href={HELP_URL} target="_blank" rel="noopener" aria-label="Help: how it works" title="How it works">
+          <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
+        </a>
       </h1>
-      <p className="lede">Read a paper beside a generated map of its argument: its questions, claims, evidence and studies. <a href={HELP_URL} target="_blank" rel="noopener">How it works ↗</a></p>
-      <p className="lede">The app generates <a href="https://mira.science/" target="_blank" rel="noopener">MIRA</a> maps from arXiv papers, following the MIRA <a href="https://github.com/MIRA-science/schema" target="_blank" rel="noopener">spec</a> and using the MIRA <a href="https://github.com/MIRA-science/MIRA-extraction" target="_blank" rel="noopener">converter</a> project.</p>
-      <p className="small"><a href={HELP_URL + "#licensing"} target="_blank" rel="noopener">arXiv licensing and paper processing</a></p>
+      <p className="lede">Read a paper beside a generated map of its argument: its questions, claims, evidence and studies. The app generates <a href="https://mira.science/" target="_blank" rel="noopener">MIRA</a> maps from arXiv papers, following the MIRA <a href="https://github.com/MIRA-science/schema" target="_blank" rel="noopener">spec</a> and using the MIRA <a href="https://github.com/MIRA-science/MIRA-extraction" target="_blank" rel="noopener">converter</a> project.</p>
     </header>
-    <section><h2>Add an arXiv paper</h2><form className="open-form" onSubmit={submit}>
+    <section><h2>Add an arXiv paper</h2>
+    <p className="small licensing-link"><a href={HELP_URL + "#licensing"} target="_blank" rel="noopener">arXiv licensing and paper processing</a></p>
+    <form className="open-form" onSubmit={submit}>
       <label className="file" htmlFor="arxiv">arXiv URL or ID</label><input id="arxiv" value={arxiv} onChange={(e) => setArxiv(e.target.value)} placeholder="https://arxiv.org/abs/2501.11120v1" required />
       <button className="primary" disabled={busy || !arxiv.trim()}>{busy ? "Adding…" : "Add paper"}</button>
     </form></section>
