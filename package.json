@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "license": "MIT",
   "type": "module",
-  "description": "PDF Argument Reader \u2014 a PDF viewer with a synchronized MIRA argument map.",
+  "description": "PDF Argument Reader \u2014 a PDF viewer with a synchronized MIRA argument graph.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -53,7 +53,7 @@ async function loadExtractor(): Promise<Extractor> {
 
 export async function convertMarkdown(id: string, markdown: string, onProgress?: (event: ExtractionProgress) => void, options: { upstreamPrompt?: boolean } = {}): Promise<ConversionResult> {
   const apiKey = process.env.OPENROUTER_API_KEY?.trim();
-  if (!apiKey) throw new ApiError(503, "OPENROUTER_KEY_MISSING", "Map generation needs the server's OpenRouter key. Ask the server operator to configure the key, then retry.");
+  if (!apiKey) throw new ApiError(503, "OPENROUTER_KEY_MISSING", "Graph generation needs the server's OpenRouter key. Ask the server operator to configure the key, then retry.");
   const engine = await loadExtractor();
   if (markdown.length > engine.SINGLE_CALL_MAX)
     throw new ApiError(422, "PAPER_TOO_LARGE", `This paper exceeds MIRA-extraction's ${engine.SINGLE_CALL_MAX.toLocaleString()}-character limit. The paper is not truncated.`, false);
@@ -80,8 +80,8 @@ export async function convertMarkdown(id: string, markdown: string, onProgress?:
     const message = e instanceof Error ? e.message : "";
     if (/HTTP (401|403)\b/.test(message)) throw new ApiError(502, "OPENROUTER_AUTH_FAILED", "OpenRouter rejected the server's credentials. Ask the server operator to check the key, then retry.");
     if (/HTTP 429\b/.test(message)) throw new ApiError(503, "OPENROUTER_RATE_LIMIT", "OpenRouter is busy or rate-limited. Retry later.");
-    if (/model mismatch/.test(message)) throw new ApiError(502, "EXTRACTOR_MODEL_MISMATCH", "OpenRouter returned a different model from the one configured. No map was published.");
-    throw new ApiError(502, "MIRA_EXTRACTION_FAILED", "MIRA-extraction could not generate a map. Retry later or ask the server operator to check model availability.");
+    if (/model mismatch/.test(message)) throw new ApiError(502, "EXTRACTOR_MODEL_MISMATCH", "OpenRouter returned a different model from the one configured. No graph was published.");
+    throw new ApiError(502, "MIRA_EXTRACTION_FAILED", "MIRA-extraction could not generate a graph. Retry later or ask the server operator to check model availability.");
   }
 }
 
@@ -98,6 +98,6 @@ export function validateMira(json: unknown) {
       throw new Error("Empty records or unusable map elements");
     return { document, graph };
   } catch {
-    throw new ApiError(502, "INVALID_CONVERSION", "The generated map could not be loaded cleanly by the reader.");
+    throw new ApiError(502, "INVALID_CONVERSION", "The generated graph could not be loaded cleanly by the reader.");
   }
 }

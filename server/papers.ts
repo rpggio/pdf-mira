@@ -186,7 +186,7 @@ export class PaperStore {
     const topology = { paperId: p.id, mapFile: file, candidate, removedIds: [...removed], output };
     await atomicWrite(join(dir, reportFile), JSON.stringify({ ...result.diagnostics, topology }, null, 2));
     if (rejected)
-      throw new ApiError(502, "NO_CONNECTED_RECORDS", "The generated map had no cards connected to each other. Retry to generate a new map.");
+      throw new ApiError(502, "NO_CONNECTED_RECORDS", "The generated graph had no cards connected to each other. Retry to generate a new graph.");
     await atomicWrite(join(dir, file), JSON.stringify(jsonld, null, 2));
     const previous = p.artifacts.mira;
     const url = artifactUrl(p.id, file);
@@ -204,7 +204,7 @@ export class PaperStore {
     try {
       const previous = await this.get(id);
       if (!previous?.arxivId || previous.status !== "ready" || !(await exists(join(this.dir(id), "paper.md"))) || !previous.artifacts.mira)
-        throw new ApiError(409, "NOT_REGENERATABLE", "Regeneration needs a ready arXiv paper with saved Markdown and a map.", false);
+        throw new ApiError(409, "NOT_REGENERATABLE", "Regeneration needs a ready arXiv paper with saved Markdown and a graph.", false);
       const paper: PaperRecord = structuredClone(previous);
       paper.status = "processing";
       try {

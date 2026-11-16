@@ -73,7 +73,7 @@ export function Reader({ paper, onBack }: { paper: PaperSource; onBack(): void }
         {paper.arxivPage && <p><a href={paper.arxivPage} target="_blank" rel="noopener noreferrer">Open on arXiv</a></p>}
       </div>
     );
-  if (!state) return <div className="center-msg">Reading the PDF and placing the map…</div>;
+  if (!state) return <div className="center-msg">Reading the PDF and placing the graph…</div>;
   return <ReaderLoaded paper={paper} loaded={state} setLoaded={setState} onBack={onBack} />;
 }
 
@@ -263,7 +263,7 @@ function ReaderLoaded({ paper, loaded, setLoaded, onBack }: { paper: PaperSource
         if (p.kind === "missing") rows.push({ id, text, problem: "not found in PDF", quote: p.quote });
         else if (p.kind === "approximate") rows.push({ id, text, problem: `approximate (${Math.round((p.occurrences[0]?.score ?? 0) * 100)}%)`, quote: p.quote });
       }
-      if (rec && !a.passages.length) rows.push({ id, text, problem: "no quote in map", quote: "" });
+      if (rec && !a.passages.length) rows.push({ id, text, problem: "no quote in graph", quote: "" });
     }
     if (rows.length || graph?.warnings.length) {
       console.groupCollapsed(`[pdf-mira] ${graph?.label}: ${rows.length} quote-matching issue(s), ${graph?.warnings.length ?? 0} loader warning(s)`);
@@ -288,9 +288,9 @@ function ReaderLoaded({ paper, loaded, setLoaded, onBack }: { paper: PaperSource
   if (!graph)
     return (
       <div className="center-msg">
-        <p>No map could be loaded for this paper.</p>
+        <p>No graph could be loaded for this paper.</p>
         <label className="button">
-          Load a map file
+          Load a graph file
           <input type="file" accept=".json,.jsonld" multiple hidden onChange={(e) => addGraphFiles(e.target.files)} />
         </label>
         <button onClick={onBack}>Back</button>
@@ -334,22 +334,22 @@ function ReaderLoaded({ paper, loaded, setLoaded, onBack }: { paper: PaperSource
       <div className="divider" onPointerDown={startDrag} title="Drag to resize" />
       <div className="pane side-pane">
         <div className="pane-head">
-          <select className="graph-select" value={graph.id} onChange={(e) => setGid(e.target.value)} title={graph.provenance ? `Maps of this paper. This one: ${graph.provenance}` : "Maps of this paper"}>
+          <select className="graph-select" value={graph.id} onChange={(e) => setGid(e.target.value)} title={graph.provenance ? `Graphs of this paper. This one: ${graph.provenance}` : "Graphs of this paper"}>
             {graphs.map((g) => (
               <option key={g.id} value={g.id}>
                 {g.label} ({g.nodes.length})
               </option>
             ))}
           </select>
-          <label className="ghost small button" title="Add another map file (.mira.jsonld or .graph.json) for this paper">
-            + map
+          <label className="ghost small button" title="Add another graph file (.mira.jsonld or .graph.json) for this paper">
+            + graph
             <input type="file" accept=".json,.jsonld" multiple hidden onChange={(e) => addGraphFiles(e.target.files)} />
           </label>
           <span className="spacer" />
           <div className="seg" role="radiogroup" aria-label="How to show them">
             {(
               [
-                ["graph", "Map", "Cards joined by arrows, laid out by the argument"],
+                ["graph", "Graph", "Cards joined by arrows, laid out by the argument"],
                 ["outline", "Outline", "An indented list under each question"],
                 ["sequence", "Sequence", "Every record in the order it appears in the paper"],
               ] as const
@@ -422,7 +422,7 @@ function ReaderLoaded({ paper, loaded, setLoaded, onBack }: { paper: PaperSource
           )}
           {view !== "sequence" && shownIds.overview && (
             <div className="graph-hud">
-              <span className="small muted">Nothing on this part of the page is in the map, so its questions and claims are shown.</span>
+              <span className="small muted">Nothing on this part of the page is in the graph, so its questions and claims are shown.</span>
             </div>
           )}
         </div>

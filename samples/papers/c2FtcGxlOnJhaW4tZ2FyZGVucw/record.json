@@ -18,14 +18,14 @@
     {
       "file": "paper.mira.jsonld",
       "url": "/api/papers/sample%3Arain-gardens/artifacts/paper.mira.jsonld",
-      "label": "Detailed map",
-      "provenance": "Example map written by hand for this fictional study, in the generator's file format."
+      "label": "Detailed graph",
+      "provenance": "Example graph written by hand for this fictional study, in the generator's file format."
     },
     {
       "file": "map-1.mira.jsonld",
       "url": "/api/papers/sample%3Arain-gardens/artifacts/map-1.mira.jsonld",
-      "label": "Short map",
-      "provenance": "A second, shorter example map of the same study, written by hand."
+      "label": "Short graph",
+      "provenance": "A second, shorter example graph of the same study, written by hand."
     }
   ],
   "provenance": {

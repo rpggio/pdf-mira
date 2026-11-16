@@ -52,7 +52,7 @@ Keep a custom `PAPERS_DIR` outside the Vite workspace or under the repository’
 
 ## Acquisition and storage
 
-The Library loads every paper from the API, caches records in local storage, and polls processing jobs after reload. Extra maps added with **+ map** stay in IndexedDB, scoped to the browser and site.
+The Library loads every paper from the API, caches records in local storage, and polls processing jobs after reload. Extra maps added with **+ graph** stay in IndexedDB, scoped to the browser and site.
 
 The backend resolves an arXiv URL or ID to a specific version through the [arXiv Atom API](https://info.arxiv.org/help/api/user-manual.html) and stores the descriptor. The browser loads the versioned PDF directly from arXiv. It retrieves HTML-derived Markdown using [arxiv2md](https://github.com/timf34/arxiv2md#rest-api), keeping references, citations, and the table of contents. Papers without usable HTML fail with `NO_USABLE_HTML`. The Library shows the authors’ arXiv abstract.
 
@@ -98,7 +98,7 @@ Pass one or more versioned IDs to select papers. Omitting IDs regenerates all el
 
 - [`parse.ts`](../src/lib/parse.ts) reads MIRA JSON-LD and working graph JSON. [`graph.ts`](../src/lib/graph.ts) drops dangling links and marks unquoted relations as inferred. The reader treats saved maps as read-only. It derives display keys in stored node order, counting separately for each type, and strips matching type prefixes from displayed titles. It uses the original IDs for links, anchors, and selection.
 - [`anchor.ts`](../src/lib/anchor.ts) normalizes PDF text and maps each character back to its page, item, and offset. It handles ligatures, hyphenation, and repeated page furniture, preserves repeated exact matches, and falls back to token overlap. Records without a usable quote can get a visibly estimated location. [`PdfViewer.tsx`](../src/components/PdfViewer.tsx) measures highlights against the rendered pdf.js text layer. Record highlights persist independently of margin-mark visibility; hover and selection change the opacity of the same type-colored overlay. Selected edges also show their relation-colored passages. Approximate and estimated matches retain dashed and dotted underlines. Navigation scrolls without a transient outline. Margin pills are centered on the right page edge.
-- [`focus.ts`](../src/lib/focus.ts) selects the visible argument neighborhood. [`layout.ts`](../src/lib/layout.ts) layers the full map with dagre for React Flow. Each paper opens in Full Map. View and scope choices apply to the open reader. Full Map fits the nodes in the settled PDF bands. A margin-mark click centers its node at the current zoom until the set of visible nodes changes. Node opacity is reduced only in On screen scope. Sequence always uses full opacity for cards and reference chips.
+- [`focus.ts`](../src/lib/focus.ts) selects the visible argument neighborhood. [`layout.ts`](../src/lib/layout.ts) layers the full map with dagre for React Flow. Each paper opens in Full Graph. View and scope choices apply to the open reader. Full Graph fits the nodes in the settled PDF bands. A margin-mark click centers its node at the current zoom until the set of visible nodes changes. Node opacity is reduced only in On screen scope. Sequence always uses full opacity for cards and reference chips.
 - [`sequence.ts`](../src/lib/sequence.ts) places records in passage order, assigns lanes for nearby links, and interpolates the scroll position between the two panes. [`userScroll.ts`](../src/lib/userScroll.ts) limits synchronization to user-initiated scrolls.
 
 ## Optional invite gate
@@ -109,7 +109,7 @@ The invite file is a JSON array with exactly one access key. The entry has a `na
 
 The entry page removes the fragment and redeems the key once. The browser gets a signed session cookie that lasts 90 days from redemption, including across restarts and invite expiry. Set `expiresAt` to 90 days from issuance for a three-month invite. Replacing the key digest revokes existing sessions. Rotating the signing key revokes all sessions.
 
-The React app shell, build assets, favicon, and two preview images are public. React shows the invite screen until a session is established. The middleware requires a session for full help and all paper data and APIs. The public access status endpoint returns the session state and the optional contact address.
+The React app shell, build assets, favicon, and preview images (including `/social-preview.png`) are public. React shows the invite screen until a session is established. The middleware requires a session for full help and all paper data and APIs. The public access status endpoint returns the session state and the optional contact address.
 
 Set `PDF_MIRA_CONTACT_EMAIL` in the server environment to show **Request access** and **Feedback**. The address is public through the access status endpoint.
 
@@ -123,14 +123,16 @@ See [local mock development](mock-development.md). `scripts/mock-reader.mjs` run
 
 **Read `public/help.html` before changing product behavior.** It is the reference for what the product does.
 
-**Keep the help current.** Every change a user can see or rely on updates the help in the same change:
+**Use proportionate verification.** Choose checks based on scope, risk, and likely failure modes. For copy, attribution, link, or instruction edits, inspect the text, destinations, and diff; do not automatically rerun tests or refresh screenshots. For behavior changes, run relevant tests and focused browser checks, adding regression coverage for meaningful bugs. For broad changes, infrastructure, dependencies, or release preparation, normally run `pnpm typecheck`, `pnpm test`, and `pnpm build`, plus relevant acceptance checks. Repeat or broaden checks only when new changes, failures, or unresolved concerns justify it. Report checks and material gaps briefly. Documentation-only edits do not require rebuilding or restarting the app.
 
-1. `public/help.html`: the full help, and the reference for what the product does. Add or edit the section, and keep the contents list (`<nav>`) in step with the section `id`s.
-2. `src/components/HelpDrawer.tsx`: the quick help. Short entries only, each linking (`more:`) to a section id in `help.html`.
-3. `public/help/img/`: the illustrations. If a change alters how the screen looks, start `pnpm dev` and run `pnpm help:shots` (`scripts/help-shots.mjs`). It recaptures every image and updates the image sizes in `help.html`. Open the changed images and check they still show what their captions say. Add new illustrations to that script.
-4. `README.md` for changes to local setup, and this guide for changes to internals.
+**Keep the help accurate.** Update affected guidance when behavior, labels, or workflows change enough to make it inaccurate. Small copy or attribution edits do not require changes to both help files unless the guidance quotes that text or becomes misleading.
 
-`test/help.test.ts` fails when a quick-help link, a contents entry or an image points at something missing. It cannot tell whether the words are still true, so reread the affected sections. Removing a feature removes its help. Write for people reading papers, not developers: plain words, short sentences, what is on screen today (no plans, no internals), and the labels exactly as the app shows them. After a substantial rewrite of the help or its images, have a fresh reviewer with no other context read the help and check the images for readability and accuracy.
+1. `public/help.html`: keep full-help contents links and section ids in step.
+2. `src/components/HelpDrawer.tsx`: keep quick-help entries short, with `more:` links to full-help sections.
+3. `public/help/img/`: refresh illustrations when meaningful visual or workflow changes make them misleading, or when requested. Minor wording differences alone do not require recapturing every image. Use `scripts/help-shots.mjs` when refreshing and inspect affected images.
+4. Update `README.md` for local setup changes and this guide for changes to internals.
+
+`test/help.test.ts` checks links and image references, not whether guidance is true. Read affected sections and remove help for removed features. Write for people reading papers: plain words, short sentences, current behavior, and accurate control labels. For substantial rewrites, use judgment about whether an independent readability review would help.
 
 **Conventions.**
 
@@ -138,4 +140,17 @@ See [local mock development](mock-development.md). `scripts/mock-reader.mjs` run
 - The authors' words (PDF highlights) and the AI reconstruction (card text) stay visibly distinct. Guesses, such as estimated locations and inferred relations, are always marked as such.
 - Do not copy code from MIRA-extraction, which has no published license. Read only its output formats.
 - Keep personal data, credentials, hostnames, and third-party papers out of the repository. `data/` and `output/` are git-ignored scratch space.
-- Before finishing, run `pnpm typecheck`, `pnpm test`, and `pnpm build`.
+
+## Social previews
+
+`index.html` supplies the description, Open Graph tags, and large-image Twitter
+card tags without requiring JavaScript. Under the invite gate, the server uses
+`PDF_MIRA_ORIGIN` at runtime to produce absolute image URLs, a canonical home
+URL, and `og:url`. Request hosts, query strings, and invite fragments are never
+used for these values. `/social-preview.png` supports public GET and HEAD while
+paper data and full help stay gated. No host settings are embedded in source.
+Ungated local development uses the relative preview image URL.
+
+`pnpm help:shots` also captures the 1200 × 630 social image from the fictional
+Rain Gardens reader. Use a fresh sample library, inspect the result, and rebuild.
+The Library footer stays in document flow so it cannot cover Retry controls.

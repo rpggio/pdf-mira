@@ -67,30 +67,30 @@
     <li><a href="#layout">The screen</a></li>
     <li><a href="#types">Kinds of record</a></li>
     <li><a href="#scope">On screen or Full</a></li>
-    <li><a href="#views">Map, Outline or Sequence</a></li>
+    <li><a href="#views">Graph, Outline or Sequence</a></li>
     <li><a href="#sequence">Sequence</a></li>
     <li><a href="#cards">Reading a card</a></li>
-    <li><a href="#selecting">Map and paper together</a></li>
+    <li><a href="#selecting">Graph and paper together</a></li>
     <li><a href="#passages">Passages</a></li>
-    <li><a href="#maps">More than one map</a></li>
+    <li><a href="#maps">More than one graph</a></li>
     <li><a href="#shortcuts">Keyboard</a></li>
     <li><a href="#limits">Limits</a></li>
   </ol>
 </nav>
 <main>
 <h1>PDF/MIRA graph viewer</h1>
-<p class="lede">Read a research paper beside a map of its argument, to see how the parts fit together as you go.</p>
+<p class="lede">Read a research paper beside a graph of its argument, to see how the parts fit together as you go.</p>
 
 <h2 id="about">What this is</h2>
-<p>A <b>generated map</b> of the paper's argument breaks it into short <b>records</b>: the questions the paper asks, the claims it makes, and the evidence and studies behind them. Arrows show how the records connect. For example, evidence <i>supports</i> a claim, and a claim <i>addresses</i> a question.</p>
-<p>Add an arXiv paper and the server runs the <a href="https://github.com/MIRA-science/MIRA-extraction">MIRA-extraction</a> converter to create its default <a href="https://mira.science/">MIRA</a> map, following the MIRA <a href="https://github.com/MIRA-science/schema">spec</a>. The map offers one reading of the paper’s arguments, with examples, methods, and sources that help explain them. Longer papers generally get more cards. It opens beside the paper it came from. Where a record has a passage that can be found in the PDF, you can return to the authors’ words. Missing passages and estimated locations are marked.</p>
+<p>A <b>generated graph</b> of the paper's argument breaks it into short <b>records</b>: the questions the paper asks, the claims it makes, and the evidence and studies behind them. Arrows show how the records connect. For example, evidence <i>supports</i> a claim, and a claim <i>addresses</i> a question.</p>
+<p>Add an arXiv paper and the server runs the <a href="https://github.com/MIRA-science/MIRA-extraction">MIRA-extraction</a> converter to create its default <a href="https://mira.science/">MIRA</a> graph, following the MIRA <a href="https://github.com/MIRA-science/schema">spec</a>. The graph offers one reading of the paper’s arguments, with examples, methods, and sources that help explain them. Longer papers generally get more cards. It opens beside the paper it came from. Where a record has a passage that can be found in the PDF, you can return to the authors’ words. Missing passages and estimated locations are marked.</p>
 <p>Use this app to:</p>
 <ul>
-  <li><b>Read with the map.</b> As you scroll the paper, the map shows the records from the part you are reading, and where they fit in the whole argument.</li>
+  <li><b>Read with the graph.</b> As you scroll the paper, the graph shows the records from the part you are reading, and where they fit in the whole argument.</li>
   <li><b>Follow a thread.</b> Click a record to find its passage in the paper and see what it connects to.</li>
 </ul>
-<p>The reader only shows the map; it doesn't change it.</p>
-<p class="muted">Imported PDFs open directly from arXiv. Generated maps are shared in the Library. Additional maps you load with <b>+ map</b> stay in your browser.</p>
+<p>The reader only shows the graph; it doesn't change it.</p>
+<p class="muted">Imported PDFs open directly from arXiv. Generated graphs are shared in the Library. Additional graphs you load with <b>+ graph</b> stay in your browser.</p>
 
 <h3 id="prompt-changes">Changes to the converter prompt</h3>
 <p>This app adds a short instruction to the converter’s own prompt; it does not replace it. The addition asks for one grounded reading of the argument: central questions with answering claims, separate evidence for distinct comparisons and examples, a supporting or opposing path from every piece of evidence to a question, and sources only for works other than the paper itself. It also gives a target number of cards that grows with the paper’s length, as a guide rather than a limit. The converter’s record types and output format are unchanged.</p>
@@ -99,43 +99,45 @@
 <p>On the invite page, you can preview the reader. Open the link from your invitation to enter. If <b>Request access</b> is available, select it to ask for an invite. If you need a new link, ask the person who shared it.</p>
 <p>The site records visits and API activity under the invite name. If <b>Feedback</b> appears in the footer of the invite page or the Library, select it to email the site operator. The GitHub icon next to it links to the project’s source.</p>
 
+<p>Sharing the site link can show its title, a short description, and a preview of the fictional example paper beside its graph. This preview is public; access to the Library still requires an invite when private access is enabled.</p>
+
 <h2 id="start">Getting started</h2>
-<p>The Library opens first. You can open an example as soon as the app starts. Look for the folded page and graph icon beside <b>PDF/MIRA graph viewer</b> and in your browser tab.</p>
+<p>The Library opens first. Its introduction credits and links to the MIRA project and the MIRA converter. You can open an example as soon as the app starts. Look for the folded page and graph icon beside <b>PDF/MIRA graph viewer</b> and in your browser tab.</p>
 <ol class="steps">
   <li>In the <b>Library</b>, enter an <b>arXiv URL or ID</b>. Include the version in the ID to import a specific version. If you omit it, the server uses the current version.</li>
-  <li>The paper appears after its metadata is resolved. Its card shows each step as the server fetches the text and generates the default map. No map file or model settings are needed for import. You can leave the page and come back.</li>
-  <li>When it has finished, click the paper. The <b>MIRA-extraction</b> map opens by default. Read the paper on the left and the map on the right. Click any card to find its passage.</li>
+  <li>The paper appears after its metadata is resolved. Its card shows each step as the server fetches the text and generates the default graph. No graph file or model settings are needed for import. You can leave the page and come back.</li>
+  <li>When it has finished, click the paper. The <b>MIRA-extraction</b> graph opens by default. Read the paper on the left and the graph on the right. Click any card to find its passage.</li>
 </ol>
 <p>The Library requests all papers stored on this server whenever it opens. <b>Papers</b> shows ready and processing entries, newest capture first. <b>Papers with errors</b> is a separate list below, also newest capture first. Capturing a paper again reuses the same version’s saved record and does not restart a failed job. When the server starts with an empty library, it adds a few example papers.</p>
 <figure>
   <img src="help/img/library.png" width="1280" height="800" alt="The Library with a folded page and graph icon beside the title, an arXiv URL or ID field, and cards for the stored papers." />
   <figcaption>Add an arXiv paper, or open a ready paper from the server library.</figcaption>
 </figure>
-<p>If the server operator enables access on a trusted local network, use the Network address shown when the reader starts. Keep the computer running the reader awake. The paper library is shared across devices. Extra maps added with <b>+ map</b> belong to each browser and site address.</p>
+<p>If the server operator enables access on a trusted local network, use the Network address shown when the reader starts. Keep the computer running the reader awake. The paper library is shared across devices. Extra graphs added with <b>+ graph</b> belong to each browser and site address.</p>
 
-<p>In the separate local mock reader, all example PDFs load locally. Adding any numeric arXiv ID returns the fictional Rain Gardens paper with a fixed map, labeled <b>Mock import</b>. No real paper is fetched or AI service called, and imports disappear when the mock reader restarts.</p>
+<p>In the separate local mock reader, all example PDFs load locally. Adding any numeric arXiv ID returns the fictional Rain Gardens paper with a fixed graph, labeled <b>Mock import</b>. No real paper is fetched or AI service called, and imports disappear when the mock reader restarts.</p>
 
 <h2 id="licensing">arXiv licensing and paper processing</h2>
 <p>The reader loads the PDF for the exact version from arXiv. The license is listed on that version’s arXiv page. See <a href="https://info.arxiv.org/help/license/index.html">arXiv’s license guide</a> for reuse terms.</p>
-<p>To generate the map, the server sends the paper’s full text to OpenRouter and keeps a private text cache for retries. Maps can include short passages from the paper.</p>
+<p>To generate the graph, the server sends the paper’s full text to OpenRouter and keeps a private text cache for retries. Graphs can include short passages from the paper.</p>
 
 <h2 id="processing">Processing and errors</h2>
-<p>While a paper is processing, its card is dimmed and the progress bar shows the current step: <b>Fetching metadata</b>, <b>Fetching Markdown</b>, then <b>Generating map</b>. During <b>Generating map</b>, the bar shows an estimate of time left when one is available. The estimate can run out before the map is ready. The bar then continues without a countdown. The Library checks processing papers automatically. Reopening the Library resumes these checks. A paper’s <b>Abstract</b> is the authors’ arXiv abstract; it is not an AI summary.</p>
+<p>While a paper is processing, its card is dimmed and the progress bar shows the current step: <b>Fetching metadata</b>, <b>Fetching Markdown</b>, then <b>Generating graph</b>. During <b>Generating graph</b>, the bar shows an estimate of time left when one is available. The estimate can run out before the graph is ready. The bar then continues without a countdown. The Library checks processing papers automatically. Reopening the Library resumes these checks. A paper’s <b>Abstract</b> is the authors’ arXiv abstract; it is not an AI summary.</p>
 <figure>
-  <img src="help/img/processing.png" width="316" height="175" alt="A paper card showing Generating map, About 35s left, and a partly filled progress bar." />
-  <figcaption>The Library shows the current step and an estimate of time left while the map is being generated.</figcaption>
+  <img src="help/img/processing.png" width="316" height="175" alt="A paper card showing Generating graph, About 35s left, and a partly filled progress bar." />
+  <figcaption>The Library shows the current step and an estimate of time left while the graph is being generated.</figcaption>
 </figure>
-<p>Before a new map is ready, the app leaves out cards that have no link to another card. If nothing connected remains, generation fails.</p>
+<p>Before a new graph is ready, the app leaves out cards that have no link to another card. If nothing connected remains, generation fails.</p>
 <p>If processing fails, the entry moves to <b>Papers with errors</b>. It shows the failed step, a message and an error code. When <b>Retry</b> is available, click it to continue using already saved text files. Adding the same paper again does not retry it. If the server restarts during processing, an interrupted paper becomes a retryable error.</p>
 <p>This first version needs usable arXiv HTML to retrieve the paper’s text. Papers without it show an error; there is no PDF extraction or OCR fallback. If the server’s OpenRouter key is missing or rejected, the entry explains that the server operator must fix it before you retry. MIRA-extraction reads the whole text in one request. Papers over its 400,000-character limit show an error and are not shortened.</p>
-<p>If the server cannot be reached, the Library shows saved records when available and retries its connection automatically. Opening a paper still needs arXiv for the PDF and the server for the map.</p>
+<p>If the server cannot be reached, the Library shows saved records when available and retries its connection automatically. Opening a paper still needs arXiv for the PDF and the server for the graph.</p>
 
 <h2 id="layout">The screen</h2>
 <figure>
-  <img src="help/img/screen.png" width="1280" height="800" alt="The reader: the paper on the left with a highlighted sentence and colored labels in its right margin; the map on the right, with a dashed line from the selected claim's label to its card." />
-  <figcaption>The paper on the left, the map on the right. The highlighted sentence is the passage behind the selected claim; a dashed line joins its label in the margin to its card.</figcaption>
+  <img src="help/img/screen.png" width="1280" height="800" alt="The reader: the paper on the left with a highlighted sentence and colored labels in its right margin; the graph on the right, with a dashed line from the selected claim's label to its card." />
+  <figcaption>The paper on the left, the graph on the right. The highlighted sentence is the passage behind the selected claim; a dashed line joins its label in the margin to its card.</figcaption>
 </figure>
-<p>Use your browser’s zoom to enlarge the reader’s text and controls. Paper cards keep a compact layout. The Library footer has links to GitHub and, when available, <b>Feedback</b>.</p>
+<p>Use your browser’s zoom to enlarge the reader’s text and controls. Paper cards keep a compact layout. The Library footer follows the paper lists and has links to GitHub and, when available, <b>Feedback</b>.</p>
 <p><b>Help</b> (top right, or press <kbd>?</kbd>) opens a short guide that links here.</p>
 
 <h2 id="types">Kinds of record</h2>
@@ -149,23 +151,23 @@
   <tr><td class="type" style="color:#8a5a3c">Source</td><td>A publication that reports a study, often a cited paper.</td></tr>
   <tr><td class="type" style="color:#6b4fbf">Request</td><td>A call for further work, such as a replication or a new analysis.</td></tr>
 </table>
-<p>In newly generated maps, a <b>Source</b> card identifies another work that documents a study. Select a record to see its passages in the paper.</p>
+<p>In newly generated graphs, a <b>Source</b> card identifies another work that documents a study. Select a record to see its passages in the paper.</p>
 <p>Arrows are named for how one record relates to another: <i>supports</i>, <i>opposes</i>, <i>addresses</i> (a claim answers a question), <i>grounds</i> (a study produced the evidence), <i>follows</i> (a study uses a protocol), and a few more.</p>
 
 <h2 id="scope">On screen or Full</h2>
-<p>Each paper opens in <b>Map</b> with <b>Full</b> selected. Use <b>On screen</b> or <b>Full</b> beside or below the view selector to choose which records you see.</p>
+<p>Each paper opens in <b>Graph</b> with <b>Full</b> selected. Use <b>On screen</b> or <b>Full</b> beside or below the view selector to choose which records you see.</p>
 <ul>
-  <li><b>On screen</b> shows, in full color, the records taken from the part of the paper you can see. Faded above them are the claims and questions they lead to, so you can see where this passage fits in the argument. If the view would leave a record alone, it also shows one record it connects to, when available. When 3 or fewer records are on screen, the records that argue for them (their evidence, say) are added too. If nothing on the visible part of the page has a record (the reference list, say), the map shows the paper's questions and claims instead, and says so.</li>
-  <li><b>Full</b> shows every record, always in the same place. Every record is shown in full color. In <b>Map</b>, the view zooms to fit the cards for the part of the paper you can see.</li>
+  <li><b>On screen</b> shows, in full color, the records taken from the part of the paper you can see. Faded above them are the claims and questions they lead to, so you can see where this passage fits in the argument. If the view would leave a record alone, it also shows one record it connects to, when available. When 3 or fewer records are on screen, the records that argue for them (their evidence, say) are added too. If nothing on the visible part of the page has a record (the reference list, say), the graph shows the paper's questions and claims instead, and says so.</li>
+  <li><b>Full</b> shows every record, always in the same place. Every record is shown in full color. In <b>Graph</b>, the view zooms to fit the cards for the part of the paper you can see.</li>
 </ul>
-<p>When you select a record, everything it connects to is added to the map, even if their passages are off screen.</p>
-<h3 id="settle">When the map changes</h3>
-<p>The map waits until you stop scrolling before it updates, so it doesn't jump around while you read. It also stays still while your pointer is over it, so nothing moves as you click. It catches up when you move the pointer away.</p>
+<p>When you select a record, everything it connects to is added to the graph, even if their passages are off screen.</p>
+<h3 id="settle">When the graph changes</h3>
+<p>The graph waits until you stop scrolling before it updates, so it doesn't jump around while you read. It also stays still while your pointer is over it, so nothing moves as you click. It catches up when you move the pointer away.</p>
 
-<h2 id="views">Map, Outline or Sequence</h2>
-<p>Choose <b>Map</b>, <b>Outline</b> or <b>Sequence</b> to change how the records are drawn.</p>
+<h2 id="views">Graph, Outline or Sequence</h2>
+<p>Choose <b>Graph</b>, <b>Outline</b> or <b>Sequence</b> to change how the records are drawn.</p>
 <ul>
-  <li><b>Map:</b> cards joined by arrows. An arrow points from a record to the one it supports, addresses or grounds. Arrows are named when they touch a record you are reading or have selected.</li>
+  <li><b>Graph:</b> cards joined by arrows. An arrow points from a record to the one it supports, addresses or grounds. Arrows are named when they touch a record you are reading or have selected.</li>
   <li><b>Outline:</b> an indented list. Each question is at the top, with what answers it indented below. The small word before each line (<i>supports</i>, <i>addresses</i>…) says how it relates to the line above. Click that word to select the arrow it stands for.</li>
   <li><b>Sequence:</b> every record in the order it appears in the paper. See <a href="#sequence">Sequence</a>.</li>
 </ul>
@@ -181,7 +183,7 @@
   <figcaption>Sequence. Questions sit furthest left; claims, evidence and studies are indented further. Nearby records are joined by loops on the left; distant ones by a chip on the right.</figcaption>
 </figure>
 <ul>
-  <li><b>Indent</b> shows a record's level in the whole map: questions at the left, then claims, then evidence, then studies and sources.</li>
+  <li><b>Indent</b> shows a record's level in the whole graph: questions at the left, then claims, then evidence, then studies and sources.</li>
   <li><b>Loops on the left</b> join records that are close together (up to three cards apart). Each loop runs out of one card and into the other; the arrowhead shows the direction. Its name appears when you point at it or select one of its cards.</li>
   <li><b>Chips on the right</b> stand in for a linked record that is far away in the paper. A short arrow, named for the link, joins the chip to its card. An arrow from the card to the chip means this record points to that one; from the chip to the card, the other way round. Click the chip to go to that record.</li>
   <li>Records the app couldn't place in the paper are listed at the end, under <b>Not placed in the paper</b>.</li>
@@ -200,22 +202,22 @@
   <tr><td><img src="help/img/card-faded.png" width="224" height="96" alt="A faded card" /></td><td><b>Faded:</b> its passage is elsewhere in the paper. Point at it to see it clearly and to darken its passage highlight.</td></tr>
 </table>
 <h3 id="ids">Record keys</h3>
-<p>Each record has a short key at the top right of its card. The first question is <b>QUE-01</b>, the first claim is <b>CLM-01</b>, and the first evidence card is <b>EVD-01</b>. The same key appears in the outline, the paper's margin and on Sequence chips. Each map has its own keys.</p>
-<p>If the map gives no passage for a record, or its passage can't be found in the paper, the app guesses where it belongs from its wording. Its passage highlight has a dotted underline to mark the estimate. While that guess is on screen, the card has a dashed border. In <b>On screen</b>, it is also drawn a little lighter.</p>
+<p>Each record has a short key at the top right of its card. The first question is <b>QUE-01</b>, the first claim is <b>CLM-01</b>, and the first evidence card is <b>EVD-01</b>. The same key appears in the outline, the paper's margin and on Sequence chips. Each graph has its own keys.</p>
+<p>If the graph gives no passage for a record, or its passage can't be found in the paper, the app guesses where it belongs from its wording. Its passage highlight has a dotted underline to mark the estimate. While that guess is on screen, the card has a dashed border. In <b>On screen</b>, it is also drawn a little lighter.</p>
 <h3>Other signs</h3>
 <ul>
-  <li>A <b>dashed arrow</b> named <b>(inferred)</b> is a connection the map draws without a passage that states it. Treat it with more caution.</li>
+  <li>A <b>dashed arrow</b> named <b>(inferred)</b> is a connection the graph draws without a passage that states it. Treat it with more caution.</li>
 </ul>
 
-<h2 id="selecting">Map and paper together</h2>
-<h3>From the map to the paper</h3>
-<p>Click a card, an arrow, or a line in the outline. Record passages stay highlighted in the color of their kind. Selecting a record darkens its highlights, and the paper scrolls to the first passage. Pointing at a card slightly darkens its highlights. Click an empty spot in the map to clear the selection.</p>
+<h2 id="selecting">Graph and paper together</h2>
+<h3>From the graph to the paper</h3>
+<p>Click a card, an arrow, or a line in the outline. Record passages stay highlighted in the color of their kind. Selecting a record darkens its highlights, and the paper scrolls to the first passage. Pointing at a card slightly darkens its highlights. Click an empty spot in the graph to clear the selection.</p>
 <figure>
   <img src="help/img/pdf-highlight.png" width="666" height="200" alt="A selected claim’s passage with a darker claim-colored highlight." />
   <figcaption>The passage behind the selected claim.</figcaption>
 </figure>
-<h3 id="from-pdf">From the paper to the map</h3>
-<p><b>Margin marks</b> sit halfway across the right edge of the paper, level with each passage that has a record. Each shows the record's key, and its color is the record's kind. Click a mark to select its record. In <b>Full</b> <b>Map</b>, this also centers the card at the current zoom. Turn the marks off with <b>margin marks</b> above the paper; passage highlights stay visible.</p>
+<h3 id="from-pdf">From the paper to the graph</h3>
+<p><b>Margin marks</b> sit halfway across the right edge of the paper, level with each passage that has a record. Each shows the record's key, and its color is the record's kind. Click a mark to select its record. In <b>Full</b> <b>Graph</b>, this also centers the card at the current zoom. Turn the marks off with <b>margin marks</b> above the paper; passage highlights stay visible.</p>
 <figure>
   <img src="help/img/margin-marks.png" width="360" height="200" alt="Colored labels such as EVD-02 and PRO-03 in the right margin beside lines of text." />
   <figcaption>Margin marks overlap the paper edge halfway, one per record, labeled with its key.</figcaption>
@@ -226,15 +228,15 @@
 <p>A record can have several passages; all stay highlighted, and selecting the record darkens them.</p>
 <ul>
   <li><b>Same words in several places:</b> each place is highlighted and numbered (1/3, 2/3…).</li>
-  <li><b>Wording differs:</b> when the map quotes a passage a little differently from the paper, the closest text is highlighted more lightly, with a dashed underline.</li>
+  <li><b>Wording differs:</b> when the graph quotes a passage a little differently from the paper, the closest text is highlighted more lightly, with a dashed underline.</li>
   <li><b>Estimated location:</b> when the app can't find any of a record's passages, it highlights its best guess with a dotted underline, labeled <b>estimated location</b>.</li>
 </ul>
 
-<h2 id="maps">More than one map</h2>
+<h2 id="maps">More than one graph</h2>
 <ul>
-  <li>Imported papers open with their generated <b>MIRA-extraction</b> map selected. A paper can have several maps, for example a detailed one and a short one. Switch between them with the menu above the map, or upload additional MIRA files with <b>+ map</b> in the paper view.</li>
-  <li>Point at the menu to see where the map came from. Some example maps were written by hand to show what the app does.</li>
-  <li>If part of a map file couldn't be read, that part is left out.</li>
+  <li>Imported papers open with their generated <b>MIRA-extraction</b> graph selected. A paper can have several graphs, for example a detailed one and a short one. Switch between them with the menu above the graph, or upload additional MIRA files with <b>+ graph</b> in the paper view.</li>
+  <li>Point at the menu to see where the graph came from. Some example graphs were written by hand to show what the app does.</li>
+  <li>If part of a graph file couldn't be read, that part is left out.</li>
 </ul>
 
 <h2 id="shortcuts">Keyboard</h2>
@@ -246,10 +248,10 @@
 
 <h2 id="limits">Limits</h2>
 <ul>
-  <li>Locating and highlighting passages needs readable PDF text. Scanned pages do not provide it, even when arXiv HTML is available for map generation.</li>
-  <li>In unusual page layouts, a passage the map quotes exactly may show as <i>wording differs</i>.</li>
-  <li>Map generation uses the server’s OpenRouter key and can fail. Generated maps may contain mistakes; check the highlighted authors’ words.</li>
-  <li>The reader only shows maps. To change a map, edit its file and open it again.</li>
+  <li>Locating and highlighting passages needs readable PDF text. Scanned pages do not provide it, even when arXiv HTML is available for graph generation.</li>
+  <li>In unusual page layouts, a passage the graph quotes exactly may show as <i>wording differs</i>.</li>
+  <li>Graph generation uses the server’s OpenRouter key and can fail. Generated graphs may contain mistakes; check the highlighted authors’ words.</li>
+  <li>The reader only shows graphs. To change a graph, edit its file and open it again.</li>
 </ul>
 </main>
 </div>

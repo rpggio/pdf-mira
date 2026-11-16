@@ -19,7 +19,7 @@ try {
   await page.click('[data-paper-id="sample:rain-gardens"] .paper-title');
   await page.waitForSelector(".react-flow__node");
   const upload = await page.$('.side-pane input[type="file"]');
-  assert.ok(upload, "+ map remains available");
+  assert.ok(upload, "+ graph remains available");
   await upload.uploadFile(new URL("../samples/papers/c2FtcGxlOnJhaW4tZ2FyZGVucw/paper.mira.jsonld", import.meta.url).pathname);
   await page.waitForFunction(() => document.querySelector(".graph-select").options.length === 3);
   console.log("PASS backend sample list, stored PDF/map reader, additional map upload");

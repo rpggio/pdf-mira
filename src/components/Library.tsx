@@ -117,7 +117,7 @@ export function Library({ onOpen, gated, contactEmail }: { onOpen(p: PaperSource
           <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
         </a>
       </h1>
-      <p className="lede">Read a paper beside a generated map of its argument: its questions, claims, evidence and studies. The app generates <a href="https://mira.science/" target="_blank" rel="noopener">MIRA</a> maps from arXiv papers, following the <a href="https://github.com/MIRA-science/schema" target="_blank" rel="noopener">spec</a> and using the <a href="https://github.com/MIRA-science/MIRA-extraction" target="_blank" rel="noopener">MIRA converter</a> project.</p>
+      <p className="lede">Read a paper beside a generated graph of its argument: its questions, claims, evidence and studies. <a href="https://mira.science/" target="_blank" rel="noopener">MIRA graphs</a> are generated from paper content by AI using the <a href="https://github.com/MIRA-science/MIRA-extraction" target="_blank" rel="noopener">MIRA converter</a>.</p>
     </header>
     <section><h2>Add an arXiv paper</h2>
     <p className="small licensing-link"><a href={HELP_URL + "#licensing"} target="pdf-mira-help">arXiv licensing and paper processing</a></p>

@@ -30,7 +30,14 @@ export function inviteAccess(file: string, signingKeyFile: string, origin: strin
 
   const signingKey = readFileSync(signingKeyFile, "utf8").trim();
   if (!validKey(signingKey)) throw new Error("Invalid PDF/MIRA session signing key");
+  // Use the configured origin, never the request host, query or invite fragment.
+  const escapeAttribute = (value: string) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+  const publicOrigin = escapeAttribute(origin);
+  const html = Buffer.from(readFileSync(join(dist, "index.html"), "utf8")
+    .replaceAll('content="/social-preview.png"', `content="${publicOrigin}/social-preview.png"`)
+    .replace("</head>", `<link rel="canonical" href="${publicOrigin}/" /><meta property="og:url" content="${publicOrigin}/" /></head>`));
   const publicImages = new Map([
+    ["/social-preview.png", readFileSync(join(dist, "social-preview.png"))],
     ["/preview/logo.png", readFileSync(join(dist, "app-icon.png"))],
     ["/preview/reader.png", readFileSync(join(dist, "help/img/screen.png"))],
   ]);
@@ -85,9 +92,11 @@ export function inviteAccess(file: string, signingKeyFile: string, origin: strin
     if (read && (path === "/invite" || (!invite && (path === "/" || path === "/index.html")))) {
       res.setHeader("Content-Security-Policy", "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'");
     }
-    if (read && path === "/invite") {
-      req.url = "/index.html";
-      return next();
+    if (read && (path === "/" || path === "/index.html" || path === "/invite")) {
+      if (invite && method === "GET") log(res, invite, "visit", method, "page");
+      res.setHeader("Content-Type", "text/html; charset=utf-8");
+      res.setHeader("Content-Length", html.length);
+      return res.end(method === "HEAD" ? undefined : html);
     }
     if (!invite) {
       // Only the app shell, Vite build assets and public preview are served before sign-in.

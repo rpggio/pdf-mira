@@ -24,7 +24,7 @@ export const STAGE_LABEL: Record<Stage, string> = {
   fetching_metadata: "Fetching metadata",
   fetching_markdown: "Fetching Markdown",
   fetching_pdf: "Fetching PDF",
-  converting_mira: "Generating map",
+  converting_mira: "Generating graph",
 };
 export const paperUrl = (id: string) => `/api/papers/${encodeURIComponent(id)}`;
 export const sortPapers = (papers: PaperRecord[]) => [...papers].sort((a, b) =>

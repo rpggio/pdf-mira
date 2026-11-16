@@ -91,6 +91,12 @@ await pause(2500);
 // 1. the whole screen, a record selected
 await selectNode("c1");
 await shot("screen", {});
+// Public social preview uses only the bundled fictional sample, never a live library.
+await page.setViewport({ width: 1200, height: 630, deviceScaleFactor: 1 });
+await pause(1800);
+await page.screenshot({ path: new URL("../public/social-preview.png", import.meta.url).pathname });
+await page.setViewport({ width: 1280, height: 800, deviceScaleFactor: 2 });
+await pause(1800);
 
 // 3. PDF highlight of the selected record
 {
