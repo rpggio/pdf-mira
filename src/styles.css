@@ -151,15 +151,16 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  padding: 10px 0;
+  gap: 28px;
+  padding: 14px 0;
+  font-size: 17px;
   background: var(--bg);
   border-top: 1px solid var(--line);
 }
 .site-footer a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 .library h1 {
   display: flex;

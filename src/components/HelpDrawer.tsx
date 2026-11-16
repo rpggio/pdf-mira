@@ -110,7 +110,7 @@ export function HelpDrawer({ onClose }: { onClose(): void }) {
     <aside className="help-drawer" aria-label="Quick help">
       <header>
         <h3>Quick help</h3>
-        <a className="small" href={HELP_URL} target="_blank" rel="noopener">
+        <a className="small" href={HELP_URL} target="pdf-mira-help">
           Full help ↗
         </a>
         <button className="ghost small" onClick={onClose} aria-label="Close help">
@@ -122,7 +122,7 @@ export function HelpDrawer({ onClose }: { onClose(): void }) {
           <section key={s.more}>
             <h4>{s.title}</h4>
             {s.body}
-            <a className="more" href={`${HELP_URL}#${s.more}`} target="_blank" rel="noopener">
+            <a className="more" href={`${HELP_URL}#${s.more}`} target="pdf-mira-help">
               More ↗
             </a>
           </section>
