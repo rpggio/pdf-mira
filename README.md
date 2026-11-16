@@ -2,6 +2,10 @@
 
 Read a research PDF beside a generated map of its questions, claims, and evidence. Scroll the paper to see the relevant part of the argument, or select a card to find its passage in the PDF. The reader keeps the authors’ words distinct from the AI-generated interpretation and marks estimated locations and inferred links.
 
+![A paper beside its argument map, with a selected claim linked to its highlighted passage.](public/help/img/screen.png)
+
+The bundled fictional Rain Gardens paper, shown in the reader.
+
 ## Default local dev
 
 "Use default local dev" means this setup. Run it exactly as written and change nothing else:

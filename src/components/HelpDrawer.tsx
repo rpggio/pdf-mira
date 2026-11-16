@@ -19,6 +19,11 @@ export interface QuickHelpSection {
 
 export const QUICK_HELP: QuickHelpSection[] = [
   {
+    title: "The screen",
+    more: "layout",
+    body: <p>Use your browser’s zoom to enlarge text and controls. Paper cards keep a compact layout.</p>,
+  },
+  {
     title: "What this is",
     more: "about",
     body: (
@@ -37,7 +42,7 @@ export const QUICK_HELP: QuickHelpSection[] = [
           <b>On screen:</b> the records from the part of the paper you are reading. Faded above them: the claims and questions they lead to. The view keeps a linked record visible when a card would otherwise stand alone. Select a record to add everything it connects to.
         </li>
         <li>
-          <b>Full:</b> every record in full color. Each paper opens in <b>Map</b> with <b>Full</b> selected. In <b>Map</b>, the view zooms to fit the cards for the visible part of the paper. Find this switch to the right of <b>Map</b>, <b>Outline</b> and <b>Sequence</b>.
+          <b>Full:</b> every record in full color. Each paper opens in <b>Map</b> with <b>Full</b> selected. In <b>Map</b>, the view zooms to fit the cards for the visible part of the paper. Find this switch beside or below <b>Map</b>, <b>Outline</b> and <b>Sequence</b>.
         </li>
       </ul>
     ),

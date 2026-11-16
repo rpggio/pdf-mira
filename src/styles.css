@@ -32,9 +32,12 @@ body,
   margin: 0;
 }
 body {
-  font: 13px/1.45 var(--sans);
+  font: 16px/1.5 var(--sans);
   color: var(--ink);
   background: var(--bg);
+}
+a {
+  color: var(--accent);
 }
 button,
 select,
@@ -71,7 +74,7 @@ label.ghost:hover {
 }
 button.small,
 label.small {
-  font-size: 12px;
+  font-size: 14px;
   padding: 3px 8px;
 }
 button.icon {
@@ -107,14 +110,14 @@ select {
   flex: 1;
 }
 .small {
-  font-size: 12px;
+  font-size: 14px;
 }
 .muted {
   color: var(--muted);
 }
 .mono {
   font-family: ui-monospace, Menlo, monospace;
-  font-size: 11px;
+  font-size: 14px;
 }
 .warn-text {
   color: #8a5a0b;
@@ -151,9 +154,9 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 28px;
-  padding: 18px 0 32px;
-  font-size: 20px;
+  gap: 20px;
+  padding: 12px 0;
+  font-size: 14px;
   background: var(--bg);
   border-top: 1px solid var(--line);
 }
@@ -182,7 +185,7 @@ select {
   border-radius: 8px;
 }
 .library h2 {
-  font-size: 13px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -191,7 +194,7 @@ select {
 .lede {
   max-width: 680px;
   color: #3d4148;
-  font-size: 15px;
+  font-size: 16px;
 }
 .paper-grid {
   display: grid;
@@ -199,6 +202,7 @@ select {
   gap: 12px;
 }
 .paper-card {
+  font-size: 13px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -364,7 +368,8 @@ button.paper-title:focus-visible {
   gap: 8px;
   padding: 6px 10px;
   border-bottom: 1px solid var(--line);
-  min-height: 40px;
+  min-height: 44px;
+  flex-wrap: wrap;
 }
 .doc-title {
   font: 600 14px var(--serif);
@@ -384,7 +389,7 @@ button.paper-title:focus-visible {
   display: inline-flex;
   gap: 4px;
   align-items: center;
-  font-size: 12px;
+  font-size: 14px;
   white-space: nowrap;
   color: var(--muted);
 }
@@ -409,7 +414,7 @@ button.paper-title:focus-visible {
   border-bottom: 1px solid var(--line);
 }
 .pdf-page-ind {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
 }
 .pdf-scroll {
@@ -685,7 +690,7 @@ button.paper-title:focus-visible {
 /* ------------------------------------------------------- shared bits */
 section h4 {
   margin: 4px 0 6px;
-  font-size: 11px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -700,7 +705,7 @@ section {
 }
 .hint {
   margin: 0;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
 }
 .legend-edge {
@@ -721,6 +726,9 @@ section {
   }
   .divider {
     display: none;
+  }
+  .side-pane {
+    grid-row: 3;
   }
 }
 
@@ -744,7 +752,7 @@ section {
   border-radius: 0;
   background: var(--panel);
   padding: 3px 9px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
 }
 .seg button + button {
@@ -823,7 +831,7 @@ section {
 .help-drawer .help-body {
   overflow: auto;
   padding: 4px 12px 16px;
-  font-size: 12.5px;
+  font-size: 14px;
   line-height: 1.45;
 }
 .help-drawer section {
@@ -835,7 +843,7 @@ section {
 }
 .help-drawer h4 {
   margin: 0 0 3px;
-  font-size: 12.5px;
+  font-size: 14px;
 }
 .help-drawer p,
 .help-drawer ul {
@@ -845,10 +853,10 @@ section {
   padding-left: 16px;
 }
 .help-drawer .more {
-  font-size: 11.5px;
+  font-size: 14px;
 }
 .help-drawer kbd {
-  font: 11px ui-monospace, monospace;
+  font: 14px ui-monospace, monospace;
   padding: 0 4px;
   border: 1px solid var(--line);
   border-bottom-width: 2px;
@@ -881,19 +889,19 @@ section {
   background: #fff;
 }
 .help-drawer figcaption {
-  font-size: 11.5px;
+  font-size: 14px;
   color: var(--muted);
 }
 .help-cards {
   display: flex;
   gap: 10px;
 }
-/* the quick help covers the whole side pane below its header */
+/* The help overlay covers the side pane, including a wrapping toolbar. */
 .side-pane {
   position: relative;
 }
 .side-pane > .help-drawer {
-  top: 41px;
+  top: 0;
 }
 
 /* ------------------------------------------------------------- sequence */

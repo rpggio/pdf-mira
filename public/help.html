@@ -122,7 +122,7 @@
 <h2 id="processing">Processing and errors</h2>
 <p>While a paper is processing, its card is dimmed and the progress bar shows the current step: <b>Fetching metadata</b>, <b>Fetching Markdown</b>, then <b>Generating map</b>. During <b>Generating map</b>, the bar shows an estimate of time left when one is available. The estimate can run out before the map is ready. The bar then continues without a countdown. The Library checks processing papers automatically. Reopening the Library resumes these checks. A paper’s <b>Abstract</b> is the authors’ arXiv abstract; it is not an AI summary.</p>
 <figure>
-  <img src="help/img/processing.png" width="316" height="173" alt="A paper card showing Generating map, About 35s left, and a partly filled progress bar." />
+  <img src="help/img/processing.png" width="316" height="175" alt="A paper card showing Generating map, About 35s left, and a partly filled progress bar." />
   <figcaption>The Library shows the current step and an estimate of time left while the map is being generated.</figcaption>
 </figure>
 <p>Before a new map is ready, the app leaves out cards that have no link to another card. If nothing connected remains, generation fails.</p>
@@ -135,6 +135,7 @@
   <img src="help/img/screen.png" width="1280" height="800" alt="The reader: the paper on the left with a highlighted sentence and colored labels in its right margin; the map on the right, with a dashed line from the selected claim's label to its card." />
   <figcaption>The paper on the left, the map on the right. The highlighted sentence is the passage behind the selected claim; a dashed line joins its label in the margin to its card.</figcaption>
 </figure>
+<p>Use your browser’s zoom to enlarge the reader’s text and controls. Paper cards keep a compact layout. The Library footer has links to GitHub and, when available, <b>Feedback</b>.</p>
 <p><b>Help</b> (top right, or press <kbd>?</kbd>) opens a short guide that links here.</p>
 
 <h2 id="types">Kinds of record</h2>
@@ -152,7 +153,7 @@
 <p>Arrows are named for how one record relates to another: <i>supports</i>, <i>opposes</i>, <i>addresses</i> (a claim answers a question), <i>grounds</i> (a study produced the evidence), <i>follows</i> (a study uses a protocol), and a few more.</p>
 
 <h2 id="scope">On screen or Full</h2>
-<p>Each paper opens in <b>Map</b> with <b>Full</b> selected. Use <b>On screen</b> or <b>Full</b> to the right of the view selector to choose which records you see.</p>
+<p>Each paper opens in <b>Map</b> with <b>Full</b> selected. Use <b>On screen</b> or <b>Full</b> beside or below the view selector to choose which records you see.</p>
 <ul>
   <li><b>On screen</b> shows, in full color, the records taken from the part of the paper you can see. Faded above them are the claims and questions they lead to, so you can see where this passage fits in the argument. If the view would leave a record alone, it also shows one record it connects to, when available. When 3 or fewer records are on screen, the records that argue for them (their evidence, say) are added too. If nothing on the visible part of the page has a record (the reference list, say), the map shows the paper's questions and claims instead, and says so.</li>
   <li><b>Full</b> shows every record, always in the same place. Every record is shown in full color. In <b>Map</b>, the view zooms to fit the cards for the part of the paper you can see.</li>
@@ -169,14 +170,14 @@
   <li><b>Sequence:</b> every record in the order it appears in the paper. See <a href="#sequence">Sequence</a>.</li>
 </ul>
 <figure>
-  <img src="help/img/outline.png" width="608" height="760" alt="The outline: indented rows, each starting with a connecting word and a record kind." />
+  <img src="help/img/outline.png" width="608" height="718" alt="The outline: indented rows, each starting with a connecting word and a record kind." />
   <figcaption>Outline of the same part of the paper.</figcaption>
 </figure>
 
 <h2 id="sequence">Sequence</h2>
 <p><b>Sequence</b> lists every record from top to bottom in the order its passage appears in the paper, so you can follow the argument as the authors tell it.</p>
 <figure>
-  <img src="help/img/sequence.png" width="608" height="760" alt="Cards in one column, some indented further than others, with colored arrows looping round their left side, and short arrows on the right leading to small chips." />
+  <img src="help/img/sequence.png" width="608" height="718" alt="Cards in one column, some indented further than others, with colored arrows looping round their left side, and short arrows on the right leading to small chips." />
   <figcaption>Sequence. Questions sit furthest left; claims, evidence and studies are indented further. Nearby records are joined by loops on the left; distant ones by a chip on the right.</figcaption>
 </figure>
 <ul>
@@ -195,7 +196,7 @@
 <p>In <b>On screen</b>, shading helps you spot which passages are visible.</p>
 <table>
   <tr><th>Looks like</th><th>Means</th></tr>
-  <tr><td><img src="help/img/card-onscreen.png" width="224" height="79" alt="A card in full color" /></td><td><b>Full color:</b> its passage is on screen now.</td></tr>
+  <tr><td><img src="help/img/card-onscreen.png" width="224" height="80" alt="A card in full color" /></td><td><b>Full color:</b> its passage is on screen now.</td></tr>
   <tr><td><img src="help/img/card-faded.png" width="224" height="96" alt="A faded card" /></td><td><b>Faded:</b> its passage is elsewhere in the paper. Point at it to see it clearly and to darken its passage highlight.</td></tr>
 </table>
 <h3 id="ids">Record keys</h3>
