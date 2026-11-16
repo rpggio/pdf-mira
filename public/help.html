@@ -83,7 +83,7 @@
 
 <h2 id="about">What this is</h2>
 <p>A <b>generated map</b> of the paper's argument breaks it into short <b>records</b>: the questions the paper asks, the claims it makes, and the evidence and studies behind them. Arrows show how the records connect. For example, evidence <i>supports</i> a claim, and a claim <i>addresses</i> a question.</p>
-<p>Add an arXiv paper and the server runs MIRA-extraction to create its default MIRA map. The map offers one reading of the paper’s arguments, with examples, methods, and sources that help explain them. Longer papers generally get more cards. It opens beside the paper it came from. Where a record has a passage that can be found in the PDF, you can return to the authors’ words. Missing passages and estimated locations are marked.</p>
+<p>Add an arXiv paper and the server runs the <a href="https://github.com/MIRA-science/MIRA-extraction">MIRA-extraction</a> converter to create its default <a href="https://mira.science/">MIRA</a> map, following the MIRA <a href="https://github.com/MIRA-science/schema">spec</a>. The map offers one reading of the paper’s arguments, with examples, methods, and sources that help explain them. Longer papers generally get more cards. It opens beside the paper it came from. Where a record has a passage that can be found in the PDF, you can return to the authors’ words. Missing passages and estimated locations are marked.</p>
 <p>Use this app to:</p>
 <ul>
   <li><b>Read with the map.</b> As you scroll the paper, the map shows the records from the part you are reading, and where they fit in the whole argument.</li>
@@ -92,9 +92,12 @@
 <p>The reader only shows the map; it doesn't change it.</p>
 <p class="muted">Imported PDFs open directly from arXiv. Generated maps are shared in the Library. Additional maps you load with <b>+ map</b> stay in your browser.</p>
 
+<h3 id="prompt-changes">Changes to the converter prompt</h3>
+<p>This app adds a short instruction to the converter’s own prompt; it does not replace it. The addition asks for one grounded reading of the argument: central questions with answering claims, separate evidence for distinct comparisons and examples, a supporting or opposing path from every piece of evidence to a question, and sources only for works other than the paper itself. It also gives a target number of cards that grows with the paper’s length, as a guide rather than a limit. The converter’s record types and output format are unchanged.</p>
+
 <h2 id="invite">Private access</h2>
 <p>On the invite page, you can preview the reader. Open the link from your invitation to enter. If <b>Request access</b> is available, select it to ask for an invite. If you need a new link, ask the person who shared it.</p>
-<p>The site records visits and API activity under the invite name. If <b>Feedback</b> appears in the footer of the invite page or the Library, select it to email the site operator.</p>
+<p>The site records visits and API activity under the invite name. If <b>Feedback</b> appears in the footer of the invite page or the Library, select it to email the site operator. The GitHub icon next to it links to the project’s source.</p>
 
 <h2 id="start">Getting started</h2>
 <p>The Library opens first. You can open an example as soon as the app starts. Look for the folded page and graph icon beside <b>PDF/MIRA graph viewer</b> and in your browser tab.</p>

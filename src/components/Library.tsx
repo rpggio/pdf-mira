@@ -115,6 +115,7 @@ export function Library({ onOpen, gated, contactEmail }: { onOpen(p: PaperSource
         <span>PDF/MIRA graph viewer</span>
       </h1>
       <p className="lede">Read a paper beside a generated map of its argument: its questions, claims, evidence and studies. <a href={HELP_URL} target="_blank" rel="noopener">How it works ↗</a></p>
+      <p className="lede">The app generates <a href="https://mira.science/" target="_blank" rel="noopener">MIRA</a> maps from arXiv papers, following the MIRA <a href="https://github.com/MIRA-science/schema" target="_blank" rel="noopener">spec</a> and using the MIRA <a href="https://github.com/MIRA-science/MIRA-extraction" target="_blank" rel="noopener">converter</a> project.</p>
       <p className="small"><a href={HELP_URL + "#licensing"} target="_blank" rel="noopener">arXiv licensing and paper processing</a></p>
     </header>
     <section><h2>Add an arXiv paper</h2><form className="open-form" onSubmit={submit}>

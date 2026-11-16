@@ -121,6 +121,8 @@ See [local mock development](mock-development.md). `scripts/mock-reader.mjs` run
 
 ## Contributing
 
+**Read `public/help.html` before changing product behavior.** It is the reference for what the product does.
+
 **Keep the help current.** Every change a user can see or rely on updates the help in the same change:
 
 1. `public/help.html`: the full help, and the reference for what the product does. Add or edit the section, and keep the contents list (`<nav>`) in step with the section `id`s.
@@ -128,7 +130,7 @@ See [local mock development](mock-development.md). `scripts/mock-reader.mjs` run
 3. `public/help/img/`: the illustrations. If a change alters how the screen looks, start `pnpm dev` and run `pnpm help:shots` (`scripts/help-shots.mjs`). It recaptures every image and updates the image sizes in `help.html`. Open the changed images and check they still show what their captions say. Add new illustrations to that script.
 4. `README.md` for changes to local setup, and this guide for changes to internals.
 
-`test/help.test.ts` fails when a quick-help link, a contents entry or an image points at something missing. It cannot tell whether the words are still true, so reread the affected sections. Removing a feature removes its help. Write for people reading papers, not developers: plain words, short sentences, what is on screen today (no plans, no internals), and the labels exactly as the app shows them.
+`test/help.test.ts` fails when a quick-help link, a contents entry or an image points at something missing. It cannot tell whether the words are still true, so reread the affected sections. Removing a feature removes its help. Write for people reading papers, not developers: plain words, short sentences, what is on screen today (no plans, no internals), and the labels exactly as the app shows them. After a substantial rewrite of the help or its images, have a fresh reviewer with no other context read the help and check the images for readability and accuracy.
 
 **Conventions.**
 
