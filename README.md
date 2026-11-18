@@ -47,7 +47,8 @@ pnpm build
 
 ## Where things are
 
-- `src/`: the browser reader (React, pdf.js, React Flow).
+- `src/`: the browser reader (React and React Flow).
+- `modules/pdf-viewer/`: the internal pdf.js integration and [browser compatibility checks](docs/development.md#browser-compatibility).
 - `server/`: the paper API and optional invite gate, mounted into Vite’s dev and preview servers. There is no separate backend process.
 - `samples/`: a fictional example paper and graphs that seed an empty library.
 - `public/help.html`, `public/help/img/`: the full user help and its images.

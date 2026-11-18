@@ -49,7 +49,12 @@ try {
     await page.waitForSelector('.hl-group .hl');
   }
   assert.deepEqual(external, [], 'Unexpected external browser requests');
-  console.log('PASS: the local sample PDF, mock AI import, and two rendered maps with text/highlights; no external browser requests.');
+  const unsupportedPage = await browser.newPage();
+  await unsupportedPage.evaluateOnNewDocument(() => Reflect.deleteProperty(window, 'Worker'));
+  await unsupportedPage.goto(base);
+  const helpLink = await unsupportedPage.waitForSelector('main.center-msg a[href$="#browser-support"]');
+  assert.equal(await helpLink.evaluate(el => el.textContent), 'Browser support');
+  console.log('PASS: the local sample PDF, mock AI import, and two rendered maps with text/highlights; no external browser requests. Missing Web Worker support shows browser guidance.');
 } finally {
   await browser?.close();
   child.kill('SIGTERM');

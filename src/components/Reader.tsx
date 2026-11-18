@@ -1,14 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { getDocument, GlobalWorkerOptions, type PDFDocumentProxy } from "pdfjs-dist";
-import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+import { openPdf, type OpenPdfTask, type PdfDocument } from "../../modules/pdf-viewer/index.ts";
 import { buildIndex, type DocIndex } from "../lib/anchor.ts";
-import { extractPages } from "../lib/pdfText.ts";
 import { parseGraphFile } from "../lib/parse.ts";
 import { activeBoxes, onScreen as computeOnScreen, primaryBox, recordBoxes, resolveAll, type VisibleBand } from "../lib/resolve.ts";
 import { layoutGraph, type Positions } from "../lib/layout.ts";
 import { effectiveGraph } from "../lib/graph.ts";
 import { addExtraGraph, extraGraphs, type GraphSource, type PaperSource } from "../lib/store.ts";
-import type { MiraGraph, NodeType, PageBox, PageText } from "../lib/types.ts";
+import type { MiraGraph, NodeType, PageBox } from "../lib/types.ts";
 import { TYPE_COLOR, TYPE_LABEL, REL_COLOR } from "../lib/palette.ts";
 import { PdfViewer, type Highlight, type MarginMark, type PdfViewerHandle } from "./PdfViewer.tsx";
 import { GraphPanel, type Selection } from "./GraphPanel.tsx";
@@ -18,13 +16,9 @@ import { SequenceView, SYNC_LINE, type SequenceHandle } from "./SequenceView.tsx
 import { OutlineView } from "./OutlineView.tsx";
 import { Connectors } from "./Connectors.tsx";
 
-GlobalWorkerOptions.workerSrc = workerUrl;
-
 interface Loaded {
-  doc: PDFDocumentProxy;
-  pages: PageText[];
+  doc: PdfDocument;
   idx: DocIndex;
-  fingerprint: string;
   graphs: (MiraGraph & { source: GraphSource })[];
 }
 
@@ -40,12 +34,13 @@ export function Reader({ paper, onBack }: { paper: PaperSource; onBack(): void }
 
   useEffect(() => {
     let dead = false;
+    let loading: OpenPdfTask | undefined;
     (async () => {
       try {
-        const data = paper.pdfBytes ? new Uint8Array(paper.pdfBytes.slice(0)) : undefined;
-        const doc = await getDocument(data ? { data } : { url: paper.pdfUrl! }).promise;
-        const pages = await extractPages(doc);
-        const idx = buildIndex(pages);
+        loading = openPdf(paper.pdfBytes ? { bytes: paper.pdfBytes } : { url: paper.pdfUrl! });
+        const doc = await loading.promise;
+        if (dead) return;
+        const idx = buildIndex(doc.pages);
         const srcs = [...paper.graphs, ...(await extraGraphs(paper.id))];
         const graphs = [];
         for (const [i, s] of srcs.entries()) {
@@ -55,13 +50,14 @@ export function Reader({ paper, onBack }: { paper: PaperSource; onBack(): void }
             console.warn("graph failed", s.file, e);
           }
         }
-        if (!dead) setState({ doc, pages, idx, fingerprint: doc.fingerprints[0] ?? paper.id, graphs });
+        if (!dead) setState({ doc, idx, graphs });
       } catch (e) {
         if (!dead) setError(String(e));
       }
     })();
     return () => {
       dead = true;
+      void loading?.destroy().catch((e) => console.warn("PDF cleanup failed", e));
     };
   }, [paper]);
 
@@ -78,7 +74,8 @@ export function Reader({ paper, onBack }: { paper: PaperSource; onBack(): void }
 }
 
 function ReaderLoaded({ paper, loaded, setLoaded, onBack }: { paper: PaperSource; loaded: Loaded; setLoaded(l: Loaded): void; onBack(): void }) {
-  const { doc, pages, idx, graphs } = loaded;
+  const { doc, idx, graphs } = loaded;
+  const { pages } = doc;
   const [gid, setGid] = useState(graphs[0]?.id ?? "");
   const graph = graphs.find((g) => g.id === gid) ?? graphs[0];
   const [selection, setSelection] = useState<Selection>(null);

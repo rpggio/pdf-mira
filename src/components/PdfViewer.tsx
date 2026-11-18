@@ -7,7 +7,7 @@
  */
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { watchUserScroll, type UserScrollWatch } from "../lib/userScroll.ts";
-import { TextLayer, type PDFDocumentProxy, type PDFPageProxy, type RenderTask } from "pdfjs-dist";
+import type { PdfDocument } from "../../modules/pdf-viewer/index.ts";
 import type { PageBox, PageText } from "../lib/types.ts";
 import type { VisibleBand } from "../lib/resolve.ts";
 
@@ -35,7 +35,7 @@ export interface PdfViewerHandle {
 }
 
 interface Props {
-  doc: PDFDocumentProxy;
+  doc: PdfDocument;
   pages: PageText[];
   highlights: Highlight[];
   marks: MarginMark[];
@@ -250,7 +250,7 @@ export const PdfViewer = forwardRef<PdfViewerHandle, Props>(function PdfViewer(
 });
 
 interface PageProps {
-  doc: PDFDocumentProxy;
+  doc: PdfDocument;
   page: PageText;
   scale: number;
   top: number;
@@ -279,32 +279,16 @@ function PageView({ doc, page, scale, top, left, scroller, highlights, marks, on
 
   useEffect(() => {
     if (!near) return;
-    let task: RenderTask | null = null;
-    let tl: TextLayer | null = null;
     let dead = false;
-    (async () => {
-      const pg: PDFPageProxy = await doc.getPage(page.page);
-      if (dead) return;
-      const vp = pg.getViewport({ scale });
-      const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
-      const c = canvas.current!;
-      c.width = Math.floor(vp.width * dpr);
-      c.height = Math.floor(vp.height * dpr);
-      c.style.width = `${vp.width}px`;
-      c.style.height = `${vp.height}px`;
-      task = pg.render({ canvas: c, viewport: vp, transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : undefined });
-      await task.promise.catch(() => {});
-      if (dead) return;
-      const t = textEl.current!;
-      t.replaceChildren();
-      tl = new TextLayer({ textContentSource: pg.streamTextContent(), container: t, viewport: vp });
-      await tl.render().catch(() => {});
-      if (!dead) setTextDivs(tl.textDivs.slice());
-    })();
+    const task = doc.renderPage(page.page, scale, canvas.current!, textEl.current!);
+    void task.promise.then((divs) => {
+      if (!dead) setTextDivs(divs);
+    }).catch((error) => {
+      if (!dead) console.warn("PDF page rendering failed", error);
+    });
     return () => {
       dead = true;
-      task?.cancel();
-      tl?.cancel();
+      task.cancel();
       setTextDivs(null);
     };
   }, [near, doc, page.page, scale]);

@@ -1,5 +1,3 @@
-import "pdfjs-dist/web/pdf_viewer.css";
-
 import { Component, useEffect, useState, type ReactNode } from "react";
 import { Library } from "./components/Library.tsx";
 import { Reader } from "./components/Reader.tsx";

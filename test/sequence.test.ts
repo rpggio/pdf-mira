@@ -1,8 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
+import { readPdfPages } from "../modules/pdf-viewer/node.ts";
 import { buildIndex } from "../src/lib/anchor.ts";
-import { extractPages } from "../src/lib/pdfText.ts";
 import { parseGraphFile } from "../src/lib/parse.ts";
 import { effectiveGraph } from "../src/lib/graph.ts";
 import { resolveAll } from "../src/lib/resolve.ts";
@@ -12,8 +11,7 @@ import { adjacency, childrenOf, parentsOf, visibleSet, FEW_ON_SCREEN } from "../
 
 describe("sequence layout (rain-gardens)", async () => {
   const data = new Uint8Array(readFileSync("samples/papers/c2FtcGxlOnJhaW4tZ2FyZGVucw/paper.pdf"));
-  const doc = await getDocument({ data, useSystemFonts: true, verbosity: 0 }).promise;
-  const idx = buildIndex(await extractPages(doc as never));
+  const idx = buildIndex(await readPdfPages(data));
   const g = parseGraphFile("paper.mira.jsonld", JSON.parse(readFileSync("samples/papers/c2FtcGxlOnJhaW4tZ2FyZGVucw/paper.mira.jsonld", "utf8")));
   const eff = effectiveGraph(g);
   const anchors = resolveAll(idx, eff);

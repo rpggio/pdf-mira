@@ -1,3 +1,4 @@
+import { BROWSER_GUIDANCE, supportsPdfViewer } from "../modules/pdf-viewer/browserSupport.ts";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
@@ -38,6 +39,17 @@ async function start() {
 
   if (gated && (!authenticated || location.pathname === "/invite")) {
     root.render(<Invite contactEmail={contactEmail} />);
+    return;
+  }
+
+  if (!supportsPdfViewer()) {
+    root.render(
+      <main className="center-msg">
+        <h1>This browser can’t open the PDF reader</h1>
+        <p>{BROWSER_GUIDANCE}</p>
+        <a href={`${import.meta.env.BASE_URL}help.html#browser-support`}>Browser support</a>
+      </main>,
+    );
     return;
   }
 

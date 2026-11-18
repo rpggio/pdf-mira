@@ -118,6 +118,7 @@ export function Library({ onOpen, gated, contactEmail }: { onOpen(p: PaperSource
         </a>
       </h1>
       <p className="lede">Read a paper beside a generated graph of its argument: its questions, claims, evidence and studies. <a href="https://mira.science/" target="_blank" rel="noopener">MIRA graphs</a> are generated from paper content by AI using the <a href="https://github.com/MIRA-science/MIRA-extraction" target="_blank" rel="noopener">MIRA converter</a>.</p>
+      <p className="small"><a href={HELP_URL + "#browser-support"} target="pdf-mira-help">Browser support</a></p>
     </header>
     <section><h2>Add an arXiv paper</h2>
     <p className="small licensing-link"><a href={HELP_URL + "#licensing"} target="pdf-mira-help">arXiv licensing and paper processing</a></p>

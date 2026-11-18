@@ -1,14 +1,12 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
+import { readPdfPages } from "../modules/pdf-viewer/node.ts";
 import { buildIndex, estimateLocation, matchQuote, occurrenceText, furniture } from "../src/lib/anchor.ts";
-import { extractPages } from "../src/lib/pdfText.ts";
 import { parseGraphFile } from "../src/lib/parse.ts";
 
 async function load(dir: string) {
   const data = new Uint8Array(readFileSync(`samples/papers/${Buffer.from(`sample:${dir}`).toString("base64url")}/paper.pdf`));
-  const doc = await getDocument({ data, useSystemFonts: true, verbosity: 0 }).promise;
-  const pages = await extractPages(doc as never);
+  const pages = await readPdfPages(data);
   return { pages, idx: buildIndex(pages) };
 }
 

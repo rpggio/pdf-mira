@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF viewer compatibility fixture</title>
+</head>
+<body>
+  <output id="result">Loading</output>
+  <div id="page" style="position: relative; --total-scale-factor: 1; --scale-round-x: 1px; --scale-round-y: 1px">
+    <canvas></canvas>
+    <div class="textLayer"></div>
+  </div>
+  <script type="module" src="./fixture.ts"></script>
+</body>
+</html>

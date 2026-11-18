@@ -12,6 +12,7 @@ Follow the [local setup](../README.md). Vite’s development and preview servers
 | `pnpm verify:ingestion` | With `pnpm dev` running, exercise the sample library and reader, then check polling, retries, and offline recovery with browser API fixtures |
 | `pnpm help:shots` | Recapture the screenshots in the full and quick help (needs `pnpm dev` running and Chrome) |
 | `pnpm dev:mock` | Run the isolated mock reader on `http://127.0.0.1:5188/` (see [mock development](mock-development.md)) |
+| `pnpm verify:pdf-viewer` | Build and test the internal PDF viewer in a local Chromium browser via Puppeteer |
 | `pnpm verify:mock` | Check the mock reader and every sample in headless Chrome |
 | `pnpm verify:live -- <arxiv-id>` | Verify real acquisition, extraction, publication, and cache reuse using the server credential |
 
@@ -97,9 +98,16 @@ Pass one or more versioned IDs to select papers. Omitting IDs regenerates all el
 ## Reader internals
 
 - [`parse.ts`](../src/lib/parse.ts) reads MIRA JSON-LD and working graph JSON. [`graph.ts`](../src/lib/graph.ts) drops dangling links and marks unquoted relations as inferred. The reader treats saved maps as read-only. It derives display keys in stored node order, counting separately for each type, and strips matching type prefixes from displayed titles. It uses the original IDs for links, anchors, and selection.
+- [`modules/pdf-viewer`](../modules/pdf-viewer/) owns the pdf.js imports, worker, stylesheet, document lifetime, page rendering, and text extraction. The reader consumes page geometry and text elements through the module. The browser entry point uses the legacy library, worker, and stylesheet. The Node entry point uses the legacy library for fixture tools and unit tests.
 - [`anchor.ts`](../src/lib/anchor.ts) normalizes PDF text and maps each character back to its page, item, and offset. It handles ligatures, hyphenation, and repeated page furniture, preserves repeated exact matches, and falls back to token overlap. Records without a usable quote can get a visibly estimated location. [`PdfViewer.tsx`](../src/components/PdfViewer.tsx) measures highlights against the rendered pdf.js text layer. Record highlights persist independently of margin-mark visibility; hover and selection change the opacity of the same type-colored overlay. Selected edges also show their relation-colored passages. Approximate and estimated matches retain dashed and dotted underlines. Navigation scrolls without a transient outline. Margin pills are centered on the right page edge.
 - [`focus.ts`](../src/lib/focus.ts) selects the visible argument neighborhood. [`layout.ts`](../src/lib/layout.ts) layers the full map with dagre for React Flow. Each paper opens in Full Graph. View and scope choices apply to the open reader. Full Graph fits the nodes in the settled PDF bands. A margin-mark click centers its node at the current zoom until the set of visible nodes changes. Node opacity is reduced only in On screen scope. Sequence always uses full opacity for cards and reference chips.
 - [`sequence.ts`](../src/lib/sequence.ts) places records in passage order, assigns lanes for nearby links, and interpolates the scroll position between the two panes. [`userScroll.ts`](../src/lib/userScroll.ts) limits synchronization to user-initiated scrolls.
+
+## Browser compatibility
+
+The reader has been verified on Chromium 131 from 2024. The legacy pdf.js library and worker each supply newer JavaScript APIs, including `Uint8Array.prototype.toHex` for document fingerprints. Before importing the reader, the app checks for Web Workers, `DOMMatrix`, and `Path2D`.
+
+Run `pnpm verify:pdf-viewer` for a browser smoke test. Set `CHROME` to the path to Chrome, Edge, or Chromium if needed. The command uses the root Vite build settings to bundle a standalone fixture with the sample PDF. It verifies URL and byte-buffer loading, the dedicated worker, canvas output, selectable text, and the guidance shown when Web Workers are unavailable. Run it when upgrading pdf.js or changing its integration.
 
 ## Optional invite gate
 
